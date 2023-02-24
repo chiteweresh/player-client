@@ -12,6 +12,14 @@ export const ControlsPanel = () => {
                               id="play" fill="#000000"></path>
                     </svg>
                 </button>
+                <button className="pause-button" id="pause">
+                    <svg viewBox="0 0 36 36" height="100%">
+                        <path className="svg-fill"
+                              d="M 12,26 16,26 16,10 12,10 z M 21,26 25,26 25,10 21,10 z"
+                              id="pause" fill="#000000"></path>
+                    </svg>
+                </button>
+                
             </div>
             <div className="progress-bar-container">
                 <div className="progress-background" id="progress-background">

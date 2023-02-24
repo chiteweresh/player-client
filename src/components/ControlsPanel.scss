@@ -5,12 +5,14 @@
 
   .controls {
     height: 36px;
+    display: flex;
 
-    .play-button {
+    .play-button, .pause-button {
       border: none;
       height: 36px;;
       display: flex;
       background-color: transparent;
+      padding: 0 0 0 1px;
     }
   }
 
