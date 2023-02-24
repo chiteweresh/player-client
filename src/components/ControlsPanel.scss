@@ -1,0 +1,33 @@
+.controls-panel {
+  background-color: lightcyan;
+  width: 600px;
+  margin: 0 20px;
+
+  .controls {
+    height: 36px;
+  }
+
+  .progress-bar-container {
+
+    .progress-background {
+      width: 600px;
+      background-color: lightgray;
+      height: 5px;
+      position: relative;
+    }
+
+    .progress {
+      width: 300px;
+      height: 5px;
+      background-color: crimson;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: width 500ms;
+    }
+
+    .progress:hover {
+      width: 340px;
+    }
+  }
+}

@@ -1,14 +1,16 @@
 import React from "react";
+import './ControlsPanel.scss'
 
 export const ControlsPanel = () => {
     return (
         <div className="controls-panel">
-            <div
-                style={{
-                    height: 100,
-                    width: 600,
-                    border: "2px solid gray"
-                }}>controls panel here
+            <div className="controls">
+                controls
+            </div>
+            <div className="progress-bar-container">
+                <div className="progress-background" id="progress-background">
+                    <div className="progress" id="progress"></div>
+                </div>
             </div>
         </div>
     )
