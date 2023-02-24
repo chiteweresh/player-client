@@ -15,6 +15,13 @@
       display: flex;
       background-color: transparent;
       padding: 0 0 0 1px;
+
+    }
+
+    .time-display {
+      display: flex;
+      padding: 0 10px;
+      align-items: center;
     }
 
     .volume-panel {

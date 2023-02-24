@@ -19,6 +19,9 @@ export const ControlsPanel = () => {
                               id="pause" fill="#000000"></path>
                     </svg>
                 </button>
+                <div className="time-display">
+                    <span id="currentTime">00:00</span> &nbsp;/&nbsp; <span id="duration">09:40</span>
+                </div>
                 <div className="volume-panel">
                     <button className="volume-speaker" id="mute">
                         <svg viewBox="0 0 36 36" height="100%">
