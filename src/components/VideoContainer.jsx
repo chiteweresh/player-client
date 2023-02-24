@@ -1,16 +1,10 @@
 import React from "react";
+import "./VideoContainer.scss"
 
 export const VideoContainer = () => {
     return (
         <div className="video-container">
-            <div
-                style={{
-                    height: 360,
-                    width: 600,
-                    border: "2px solid lightblue",
-                    margin: "0 20px"
-                }}>video here
-            </div>
+            <video className="video" controls src="/video/2.mp4" id="video2"></video>
         </div>
     )
 }
