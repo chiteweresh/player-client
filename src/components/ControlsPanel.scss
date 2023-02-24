@@ -5,6 +5,13 @@
 
   .controls {
     height: 36px;
+
+    .play-button {
+      border: none;
+      height: 36px;;
+      display: flex;
+      background-color: transparent;
+    }
   }
 
   .progress-bar-container {
