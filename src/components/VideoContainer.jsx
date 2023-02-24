@@ -7,7 +7,9 @@ export const VideoContainer = () => {
                 style={{
                     height: 360,
                     width: 600,
-                    border: "2px solid lightblue"
+                    border: "2px solid lightblue",
+                    boxSizing: "border-box",
+                    margin: "0 20px"
                 }}>video here
             </div>
         </div>

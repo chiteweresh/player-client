@@ -1,12 +1,9 @@
 .player {
   width: auto;
   min-height: 1000px;
-  background-color: bisque;
-  text-align: center;
 
   .highlight {
-    margin-top: 0;
-    padding: 10px;
+    margin: 20px;
     font-family: Monaco, monospace;
   }
 }
