@@ -1,13 +1,12 @@
 .controls-panel {
-  background-color: lightcyan;
   width: 600px;
   margin: 0 20px;
+  border: lightgray 2px solid;
 
   .controls {
     height: 36px;
     display: flex;
     position: relative;
-    background-color: gold;
 
     .play-button, .pause-button, .volume-speaker {
       border: none;
@@ -28,7 +27,6 @@
       align-items: center;
       display: flex;
       position: absolute;
-      background-color: pink;
       right: 0;
       width: 150px;
 
