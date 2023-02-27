@@ -1,0 +1,12 @@
+.controls-button {
+  background-color: transparent;
+  float: left;
+
+  .play-button, .pause-button {
+    border: none;
+    height: 36px;;
+    display: flex;
+    background-color: transparent;
+    padding: 0 0 0 1px;
+  }
+}

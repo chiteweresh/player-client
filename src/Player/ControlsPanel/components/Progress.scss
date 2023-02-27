@@ -1,0 +1,29 @@
+.progress {
+  .time-display {
+    height: 36px;
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+  }
+
+  .progress-bar {
+    width: 600px;
+    background-color: lightgray;
+    height: 5px;
+    position: relative;
+
+    .current-progress {
+      width: 300px;
+      height: 5px;
+      background-color: crimson;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: width 500ms;
+    }
+
+    .current-progress:hover {
+      width: 340px;
+    }
+  }
+}

@@ -1,8 +1,8 @@
 import {render, screen} from '@testing-library/react';
-import Player from './Player';
+import App from "./App";
 
-test('renders learn react link', () => {
-    render(<Player/>);
+test('renders player', () => {
+    render(<App/>);
     const highlight = screen.getByText('This is a player');
     expect(highlight).toBeInTheDocument();
 });
