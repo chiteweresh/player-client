@@ -1,3 +1,5 @@
+@import "src/variables";
+
 .volume-panel {
   align-items: center;
   display: flex;
@@ -7,15 +9,15 @@
 
   .volume-speaker {
     border: none;
-    height: 36px;;
+    height: $button-height;
     display: flex;
     background-color: transparent;
     padding: 0 0 0 1px;
   }
 
   .volume-bar {
-    background-color: lightgray;
-    height: 5px;
+    background-color: $background;
+    height: $background-width;
     margin-right: 10px;
     border-radius: 4px;
     width: 100px;
@@ -23,7 +25,7 @@
 
     .current-volume {
       background-color: cornflowerblue;
-      height: 5px;
+      height: $background-width;
       border-radius: 4px;
       width: 40px;
       position: absolute;
@@ -32,13 +34,13 @@
     }
 
     .slider {
-      width: 15px;
-      height: 15px;
-      background-color: white;
+      width: $slider-size;
+      height: $slider-size;
+      background-color: $white;
       border-radius: 50%;
-      border: lightgray 1px solid;
+      border: $background 1px solid;
       position: absolute;
-      top: -5px;
+      top: ($background-width - $slider-size)/2;
       left: 32.5px;
       z-index: 1;
     }

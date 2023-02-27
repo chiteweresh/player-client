@@ -1,15 +1,17 @@
+@import "src/variables";
+
 .video-container {
-  width: 600px;
-  height: 360px;
-  margin: 0 20px;
-  border: lightblue 2px solid;
+  width: $video-width;
+  height: $video-height;
+  margin: 0 $margin-base;
+  border: $base-border;
 
   .video {
     position: relative;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    max-width: 600px;
-    max-height: 360px;
+    max-width: $video-width;
+    max-height: $video-height;
   }
 }

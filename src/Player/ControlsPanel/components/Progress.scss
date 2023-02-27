@@ -1,21 +1,23 @@
+@import "src/variables";
+
 .progress {
   .time-display {
-    height: 36px;
+    height: $time-display-height;
     display: flex;
     padding: 0 10px;
     align-items: center;
   }
 
   .progress-bar {
-    width: 600px;
-    background-color: lightgray;
-    height: 5px;
+    width: $progress-bar-width;
+    background-color: $background;
+    height: $background-width;
     position: relative;
 
     .current-progress {
       width: 300px;
-      height: 5px;
-      background-color: crimson;
+      height: $background-width;
+      background-color: $current-progress;
       position: absolute;
       top: 0;
       left: 0;
