@@ -2,7 +2,7 @@ import {ControlsPanel} from "./ControlsPanel/ControlsPanel";
 import './Player.scss';
 import {VideoContainer} from "./VideoContainer/VideoContainer";
 
-function Player() {
+export const Player = () => {
     return (
         <div className="player">
             <VideoContainer/>
@@ -11,4 +11,3 @@ function Player() {
     );
 }
 
-export default Player;
