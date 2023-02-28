@@ -1,0 +1,48 @@
+@import "src/variables";
+
+.volume-panel {
+  align-items: center;
+  display: flex;
+  position: absolute;
+  right: 0;
+  width: 150px;
+
+  .volume-speaker {
+    border: none;
+    height: $button-height;
+    display: flex;
+    background-color: transparent;
+    padding: 0 0 0 1px;
+  }
+
+  .volume-bar {
+    background-color: $background;
+    height: $background-width;
+    margin-right: 10px;
+    border-radius: 4px;
+    width: 100px;
+    position: relative;
+
+    .current-volume {
+      background-color: cornflowerblue;
+      height: $background-width;
+      border-radius: 4px;
+      width: 40px;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .slider {
+      width: $slider-size;
+      height: $slider-size;
+      background-color: $white;
+      border-radius: 50%;
+      border: $background 1px solid;
+      position: absolute;
+      top: ($background-width - $slider-size)/2;
+      left: 32.5px;
+      z-index: 1;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+@import "src/variables";
+
+.progress {
+  .time-display {
+    height: $time-display-height;
+    display: flex;
+    padding: 0 10px;
+    align-items: center;
+  }
+
+  .progress-bar {
+    width: $progress-bar-width;
+    background-color: $background;
+    height: $background-width;
+    position: relative;
+
+    .current-progress {
+      width: 300px;
+      height: $background-width;
+      background-color: $current-progress;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: width 500ms;
+    }
+
+    .current-progress:hover {
+      width: 340px;
+    }
+  }
+}
