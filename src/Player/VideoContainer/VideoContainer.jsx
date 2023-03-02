@@ -3,11 +3,14 @@ import "./VideoContainer.scss"
 
 export const VideoContainer = (props) => {
     const videoRef = useRef(null);
-    const playing = props.playing;
+    const {playing, muted} = props;
 
     useEffect(() => {
         !playing ? (videoRef.current.pause()) : (videoRef.current.play())
     }, [playing])
+    useEffect(() => {
+        videoRef.current.muted = muted
+    }, [muted])
 
     return (
         <div className="video-container">

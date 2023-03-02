@@ -2,8 +2,7 @@ import React from "react";
 import './ControlsButton.scss';
 
 export const ControlsButton = (props) => {
-    const onPlayPause = props.onPlayPause;
-    const playing = props.playing;
+    const {onPlayPause, playing} = props;
     return (
         <div className="controls-button">
             <button className="play-button" id="play" onClick={onPlayPause}>
