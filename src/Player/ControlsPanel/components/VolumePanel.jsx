@@ -5,7 +5,7 @@ export const VolumePanel = (props) => {
     const {onMute, muted} = props;
     return (
         <div className="volume-panel">
-            <button className="volume-speaker" id="mute" onClick={onMute}>
+            <button className="volume-speaker" onClick={onMute}>
                 {
                     muted ? (
                         <svg viewBox="0 0 36 36" height="100%">
@@ -24,8 +24,8 @@ export const VolumePanel = (props) => {
             </button>
             <div className="volume-bar">
                 <div className="volume">
-                    <div className="slider" id="slider"></div>
-                    <div className="current-volume" id="current-volume"></div>
+                    <div className="slider"></div>
+                    <div className="current-volume"></div>
                 </div>
             </div>
         </div>)

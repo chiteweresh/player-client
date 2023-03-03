@@ -34,7 +34,10 @@ export const Player = () => {
 
     return (
         <div className="player">
-            <VideoContainer playing={playing} muted={muted} onUpdateTime={updateTimeHandler}
+            <VideoContainer
+                playing={playing}
+                muted={muted}
+                onUpdateTime={updateTimeHandler}
             />
             <ControlsPanel
                 playing={playing}

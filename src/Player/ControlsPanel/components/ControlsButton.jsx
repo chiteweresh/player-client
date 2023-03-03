@@ -5,7 +5,7 @@ export const ControlsButton = (props) => {
     const {onPlayPause, playing} = props;
     return (
         <div className="controls-button">
-            <button className="play-button" id="play" onClick={onPlayPause}>
+            <button className="play-button" onClick={onPlayPause}>
                 {
                     !playing ? (
                         <svg viewBox="0 0 36 36" height="100%">

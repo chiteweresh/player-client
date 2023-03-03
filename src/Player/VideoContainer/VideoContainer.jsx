@@ -18,11 +18,15 @@ export const VideoContainer = (props) => {
         const duration = video.duration;
         props.onUpdateTime(time, duration)
     }
-    
+
     return (
         <div className="video-container">
-            <video onTimeUpdate={onTimeUpdate} ref={videoRef} className="video" controls src="/video/2.mp4"
-                   id="video2"></video>
+            <video
+                onTimeUpdate={onTimeUpdate}
+                ref={videoRef}
+                className="video"
+                controls src="/video/2.mp4"
+            ></video>
         </div>
     )
 }
