@@ -8,6 +8,7 @@ export const Progress = (props) => {
         const second = ('0' + Math.floor(time % 60)).slice(-2)
         return minute + ":" + second
     }
+    const currentProgress = currentTime / duration * 640;
 
     return (
         <div className="progress">
@@ -16,7 +17,7 @@ export const Progress = (props) => {
                 id="duration">{getDisplayTime(duration)}</span>
             </div>
             <div className="progress-bar">
-                <div className="current-progress"></div>
+                <div className="current-progress" style={{width: currentProgress}}></div>
             </div>
         </div>
     )

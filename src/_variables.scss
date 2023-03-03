@@ -7,12 +7,16 @@ $progress-bar-width: $video-width;
 $button-height: 36px;
 $time-display-height: $button-height;
 
-$background-width: 5px;
+$background-height: 5px;
 $slider-size: 15px;
+
+$full-volume-width: 100px;
+$default-volume-width: ($full-volume-width)/2;
 
 $white: #fff;
 $black: #000;
 $background: #D3D3D3FF;
-$current-progress: #DC143CFF;
+$current-progress-color: #DC143CFF;
+$current-progress-width: 0px;
 
 $base-border: lightblue 2px solid;

@@ -17,17 +17,17 @@
 
   .volume-bar {
     background-color: $background;
-    height: $background-width;
+    height: $background-height;
     margin-right: 10px;
     border-radius: 4px;
-    width: 100px;
+    width: $full-volume-width;
     position: relative;
 
     .current-volume {
       background-color: cornflowerblue;
-      height: $background-width;
+      height: $background-height;
       border-radius: 4px;
-      width: 40px;
+      width: $default-volume-width;
       position: absolute;
       top: 0;
       left: 0;
@@ -40,8 +40,8 @@
       border-radius: 50%;
       border: $background 1px solid;
       position: absolute;
-      top: ($background-width - $slider-size)/2;
-      left: 32.5px;
+      top: ($background-height - $slider-size)/2;
+      left: ($default-volume-width - ($slider-size)/2);
       z-index: 1;
     }
   }
