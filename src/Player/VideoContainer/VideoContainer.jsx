@@ -12,9 +12,17 @@ export const VideoContainer = (props) => {
         videoRef.current.muted = muted
     }, [muted])
 
+    const onTimeUpdate = () => {
+        const video = videoRef.current;
+        const time = video.currentTime;
+        const duration = video.duration;
+        props.onUpdateTime(time, duration)
+    }
+    
     return (
         <div className="video-container">
-            <video ref={videoRef} className="video" controls src="/video/2.mp4" id="video2"></video>
+            <video onTimeUpdate={onTimeUpdate} ref={videoRef} className="video" controls src="/video/2.mp4"
+                   id="video2"></video>
         </div>
     )
 }

@@ -9,7 +9,7 @@ export const ControlsPanel = (props) => {
         <div className="controls-panel">
             <ControlsButton onPlayPause={props.onPlayPause} playing={props.playing}/>
             <VolumePanel onMute={props.onMute} muted={props.muted}/>
-            <Progress/>
+            <Progress currentTime={props.currentTime} duration={props.duration}/>
         </div>
     )
 }
