@@ -1,8 +1,18 @@
-import React from "react";
+import React, {useRef, useState} from "react";
 import './VolumePanel.scss';
 
 export const VolumePanel = (props) => {
-    const {onMute, muted} = props;
+    const {onMute, muted, onUpdateVolume} = props;
+    const [width, setWidth] = useState(50);
+    const volumeRef = useRef(null);
+
+    const onClickVolume = (e) => {
+        const clickPosition = e.pageX;
+        const panelPosition = Math.floor(volumeRef.current.getBoundingClientRect().x);
+        const currentVolume = (clickPosition - panelPosition) / 100;
+        onUpdateVolume(currentVolume);
+        setWidth(clickPosition - panelPosition);
+    }
     return (
         <div className="volume-panel">
             <button className="volume-speaker" onClick={onMute}>
@@ -22,11 +32,9 @@ export const VolumePanel = (props) => {
                     )
                 }
             </button>
-            <div className="volume-bar">
-                <div className="volume">
-                    <div className="slider"></div>
-                    <div className="current-volume"></div>
-                </div>
+            <div className="volume-bar" ref={volumeRef} onClick={onClickVolume}>
+                <div className="slider" style={{left: width - 7.5}}></div>
+                <div className="current-volume" style={{width: width}}></div>
             </div>
         </div>)
 }

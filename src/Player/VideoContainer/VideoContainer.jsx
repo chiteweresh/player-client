@@ -3,7 +3,7 @@ import "./VideoContainer.scss"
 
 export const VideoContainer = (props) => {
     const videoRef = useRef(null);
-    const {playing, muted} = props;
+    const {playing, muted, volume} = props;
 
     useEffect(() => {
         !playing ? (videoRef.current.pause()) : (videoRef.current.play())
@@ -11,6 +11,9 @@ export const VideoContainer = (props) => {
     useEffect(() => {
         videoRef.current.muted = muted
     }, [muted])
+    useEffect(() => {
+        videoRef.current.volume = volume
+    }, [volume])
 
     const onTimeUpdate = () => {
         const video = videoRef.current;
