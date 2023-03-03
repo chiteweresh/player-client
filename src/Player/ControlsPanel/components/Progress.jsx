@@ -13,8 +13,9 @@ export const Progress = (props) => {
     return (
         <div className="progress">
             <div className="time-display">
-                <span className="currentTime">{getDisplayTime(currentTime)}</span> &nbsp;/&nbsp; <span
-                className="duration">{getDisplayTime(duration)}</span>
+                <span>{getDisplayTime(currentTime)}</span>
+                &nbsp;/&nbsp;
+                <span>{getDisplayTime(duration)}</span>
             </div>
             <div className="progress-bar">
                 <div className="current-progress" style={{width: currentProgress}}></div>
