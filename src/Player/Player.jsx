@@ -9,9 +9,10 @@ export const Player = () => {
         muted: false,
         duration: 0,
         currentTime: 0,
-        currentVolume: 0.5
+        currentVolume: 0.5,
+        clickFrames: null
     })
-    const {playing, muted, duration, currentTime, currentVolume} = videoState
+    const {playing, muted, duration, currentTime, currentVolume, clickFrames} = videoState
 
     const playPauseHandler = () => {
         setVideoState({
@@ -40,6 +41,13 @@ export const Player = () => {
         })
     }
 
+    const progressHandler = (time) => {
+        setVideoState({
+            ...videoState,
+            clickFrames: time
+        })
+    }
+
     return (
         <div className="player">
             <VideoContainer
@@ -47,6 +55,7 @@ export const Player = () => {
                 muted={muted}
                 onUpdateTime={updateTimeHandler}
                 volume={currentVolume}
+                clickFrames={clickFrames}
             />
             <ControlsPanel
                 playing={playing}
@@ -57,6 +66,8 @@ export const Player = () => {
                 duration={duration}
                 volume={currentVolume}
                 onUpdateVolume={volumeHandler}
+                clickFrames={clickFrames}
+                onUpdateProgress={progressHandler}
             />
         </div>
     );

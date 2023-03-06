@@ -8,7 +8,7 @@ export const VolumePanel = (props) => {
 
     const onClickVolume = (e) => {
         const clickPosition = e.pageX;
-        const panelPosition = Math.floor(volumeRef.current.getBoundingClientRect().x);
+        const panelPosition = Math.floor(volumeRef.current.getBoundingClientRect().left);
         const currentVolume = (clickPosition - panelPosition) / 100;
         onUpdateVolume(currentVolume);
         setWidth(clickPosition - panelPosition);
