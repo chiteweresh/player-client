@@ -14,10 +14,9 @@ export const VideoContainer = (props) => {
     }, [volume])
 
     const onTimeUpdate = () => {
-        const video = videoRef.current;
-        const time = video.currentTime;
-        const duration = video.duration;
-        props.onUpdateTime(time, duration)
+        const time = videoRef.current.currentTime;
+        const duration = videoRef.current.duration;
+        onUpdateTime(time, duration)
     }
 
     return (
