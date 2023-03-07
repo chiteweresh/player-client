@@ -1,5 +1,5 @@
 import React, {useRef} from "react";
-import {getDisplayTime} from "../../../utils/utils";
+import {getDisplayTime, getShift} from "../../../utils/utils";
 import './Progress.scss'
 
 export const Progress = (props) => {
@@ -7,9 +7,8 @@ export const Progress = (props) => {
     const {currentTime, duration, onUpdateProgress} = props;
     const currentProgress = currentTime / duration * 640;
     const onClickProgress = (e) => {
-        const clickPosition = e.pageX;
-        const panelPosition = Math.floor(progressRef.current.getBoundingClientRect().left)
-        const framesTime = (clickPosition - panelPosition) / 640 * duration;
+        const shift = getShift(e, progressRef)
+        const framesTime = shift / 640 * duration;
         onUpdateProgress(framesTime);
     }
 
