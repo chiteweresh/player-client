@@ -81,8 +81,7 @@ export const Player = () => {
             />
             <PlayList
                 source={source}
-                onUpdateSource={sourceHandler}
-            />
+                onUpdateSource={sourceHandler}/>
         </div>
     );
 }
