@@ -1,5 +1,5 @@
 import React, {useRef} from "react";
-import {getDisplayTime} from "../../../utils/progressUtils";
+import {getDisplayTime} from "../../../utils/utils";
 import './Progress.scss'
 
 export const Progress = (props) => {
@@ -12,7 +12,7 @@ export const Progress = (props) => {
         const framesTime = (clickPosition - panelPosition) / 640 * duration;
         onUpdateProgress(framesTime);
     }
-    
+
     return (
         <div className="progress">
             <div className="time-display">

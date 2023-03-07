@@ -1,4 +1,5 @@
 import React, {useRef, useState} from "react";
+import {getShift} from "../../../utils/utils";
 import './VolumePanel.scss';
 
 export const VolumePanel = (props) => {
@@ -6,13 +7,15 @@ export const VolumePanel = (props) => {
     const [width, setWidth] = useState(50);
     const volumeRef = useRef(null);
 
-    const onClickVolume = (e) => {
-        const clickPosition = e.pageX;
-        const panelPosition = Math.floor(volumeRef.current.getBoundingClientRect().left);
-        const currentVolume = (clickPosition - panelPosition) / 100;
-        onUpdateVolume(currentVolume);
-        setWidth(clickPosition - panelPosition);
+    const changeVolume = (e) => {
+        const shift = getShift(e, volumeRef)
+        const currentVolume = shift / 100;
+        if (currentVolume >= 0 && currentVolume <= 1) {
+            onUpdateVolume(currentVolume);
+            setWidth(shift);
+        }
     }
+
     return (
         <div className="volume-panel">
             <button className="volume-speaker" onClick={onMute}>
@@ -32,7 +35,7 @@ export const VolumePanel = (props) => {
                     )
                 }
             </button>
-            <div className="volume-bar" ref={volumeRef} onClick={onClickVolume}>
+            <div className="volume-bar" ref={volumeRef} onClick={changeVolume}>
                 <div className="slider" style={{left: width - 7.5}}></div>
                 <div className="current-volume" style={{width: width}}></div>
             </div>
