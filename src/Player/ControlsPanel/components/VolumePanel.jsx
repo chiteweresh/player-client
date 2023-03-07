@@ -16,6 +16,15 @@ export const VolumePanel = (props) => {
         }
     }
 
+    const onDragSlider = () => {
+        document.onmousemove = (e) => {
+            changeVolume(e);
+        };
+        document.onmouseup = () => {
+            document.onmousemove = null;
+        }
+    }
+
     return (
         <div className="volume-panel">
             <button className="volume-speaker" onClick={onMute}>
@@ -36,7 +45,8 @@ export const VolumePanel = (props) => {
                 }
             </button>
             <div className="volume-bar" ref={volumeRef} onClick={changeVolume}>
-                <div className="slider" style={{left: width - 7.5}}></div>
+                <div className="slider" style={{left: width - 7.5}}
+                     onMouseDown={onDragSlider}></div>
                 <div className="current-volume" style={{width: width}}></div>
             </div>
         </div>)
