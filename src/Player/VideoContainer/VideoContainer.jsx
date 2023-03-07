@@ -3,7 +3,7 @@ import "./VideoContainer.scss"
 
 export const VideoContainer = (props) => {
     const videoRef = useRef(null);
-    const {playing, muted, volume, onUpdateTime, clickFrames} = props;
+    const {playing, muted, volume, onUpdateTime, clickFrames, source} = props;
 
     useEffect(() => {
         !playing ? (videoRef.current.pause()) : (videoRef.current.play())
@@ -30,7 +30,7 @@ export const VideoContainer = (props) => {
                 muted={muted}
                 ref={videoRef}
                 className="video"
-                controls src="/video/2.mp4"
+                src={"/video/" + source + ".mp4"}
             ></video>
         </div>
     )

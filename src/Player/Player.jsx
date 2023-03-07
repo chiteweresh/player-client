@@ -1,10 +1,12 @@
 import {useState} from "react";
 import {ControlsPanel} from "./ControlsPanel/ControlsPanel";
 import './Player.scss';
+import {PlayList} from "./PlayList/PlayList";
 import {VideoContainer} from "./VideoContainer/VideoContainer";
 
 export const Player = () => {
     const [videoState, setVideoState] = useState({
+        source: "2",
         playing: false,
         muted: false,
         duration: 0,
@@ -12,7 +14,14 @@ export const Player = () => {
         currentVolume: 0.5,
         clickFrames: null
     })
-    const {playing, muted, duration, currentTime, currentVolume, clickFrames} = videoState
+    const {playing, muted, duration, currentTime, currentVolume, clickFrames, source} = videoState
+
+    const sourceHandler = (item) => {
+        setVideoState({
+            ...videoState,
+            source: item
+        })
+    }
 
     const playPauseHandler = () => {
         setVideoState({
@@ -56,6 +65,7 @@ export const Player = () => {
                 onUpdateTime={updateTimeHandler}
                 volume={currentVolume}
                 clickFrames={clickFrames}
+                source={source}
             />
             <ControlsPanel
                 playing={playing}
@@ -68,6 +78,10 @@ export const Player = () => {
                 onUpdateVolume={volumeHandler}
                 clickFrames={clickFrames}
                 onUpdateProgress={progressHandler}
+            />
+            <PlayList
+                source={source}
+                onUpdateSource={sourceHandler}
             />
         </div>
     );
