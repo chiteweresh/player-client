@@ -35,13 +35,19 @@ export const Player = () => {
             muted: !videoState.muted
         })
     }
-    const updateTimeHandler = (current, duration) => {
+    const updateTimeHandler = (current) => {
         setVideoState({
             ...videoState,
             currentTime: current,
+        })
+    }
+    const getDurationHandler = (duration) => {
+        setVideoState({
+            ...videoState,
             duration: duration
         })
     }
+
 
     const volumeHandler = (volume) => {
         setVideoState({
@@ -63,6 +69,7 @@ export const Player = () => {
                 playing={playing}
                 muted={muted}
                 onUpdateTime={updateTimeHandler}
+                onLoadedDuration={getDurationHandler}
                 volume={currentVolume}
                 clickFrames={clickFrames}
                 source={source}

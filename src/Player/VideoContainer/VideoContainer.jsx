@@ -3,29 +3,34 @@ import "./VideoContainer.scss"
 
 export const VideoContainer = (props) => {
     const videoRef = useRef(null);
-    const {playing, muted, volume, onUpdateTime, clickFrames, source} = props;
+    const {playing, onPlayPause, muted, volume, onUpdateTime, onLoadedDuration, clickFrames, source} = props;
 
     useEffect(() => {
-        !playing ? (videoRef.current.pause()) : (videoRef.current.play())
+        !playing ? (videoRef.current.pause()) : (videoRef.current.play());
     }, [playing])
 
     useEffect(() => {
-        videoRef.current.volume = volume
+        videoRef.current.volume = volume;
     }, [volume])
 
     useEffect(() => {
-        videoRef.current.currentTime = clickFrames
+        videoRef.current.currentTime = clickFrames;
     }, [clickFrames])
 
     const onTimeUpdate = () => {
         const time = videoRef.current.currentTime;
+        onUpdateTime(time);
+    }
+
+    const onDurationLoaded = () => {
         const duration = videoRef.current.duration;
-        onUpdateTime(time, duration)
+        onLoadedDuration(duration);
     }
 
     return (
         <div className="video-container">
             <video
+                onLoadedMetadata={onDurationLoaded}
                 onTimeUpdate={onTimeUpdate}
                 muted={muted}
                 ref={videoRef}
