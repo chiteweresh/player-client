@@ -32,6 +32,7 @@ export const VideoContainer = (props) => {
             <video
                 onLoadedMetadata={onDurationLoaded}
                 onTimeUpdate={onTimeUpdate}
+                onEnded={onPlayPause}
                 muted={muted}
                 ref={videoRef}
                 className="video"

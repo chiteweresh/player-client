@@ -67,6 +67,7 @@ export const Player = () => {
         <div className="player">
             <VideoContainer
                 playing={playing}
+                onPlayPause={playPauseHandler}
                 muted={muted}
                 onUpdateTime={updateTimeHandler}
                 onLoadedDuration={getDurationHandler}
