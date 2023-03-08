@@ -7,8 +7,8 @@ export const Progress = (props) => {
     const {currentTime, duration, onUpdateProgress} = props;
     const currentProgress = currentTime / duration * 640;
     const onClickProgress = (e) => {
-        const shift = getShift(e, progressRef)
-        const framesTime = shift / 640 * duration;
+        const progressLength = progressRef.current.offsetWidth;
+        const framesTime = getShift(e, progressRef) / progressLength * duration;
         onUpdateProgress(framesTime);
     }
 
