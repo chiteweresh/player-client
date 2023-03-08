@@ -1,10 +1,43 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 import "./VideoContainer.scss"
 
-export const VideoContainer = () => {
+export const VideoContainer = (props) => {
+    const videoRef = useRef(null);
+    const {playing, onPlayPause, muted, volume, onUpdateTime, onLoadedDuration, clickFrames, source} = props;
+
+    useEffect(() => {
+        !playing ? (videoRef.current.pause()) : (videoRef.current.play());
+    }, [playing])
+
+    useEffect(() => {
+        videoRef.current.volume = volume;
+    }, [volume])
+
+    useEffect(() => {
+        videoRef.current.currentTime = clickFrames;
+    }, [clickFrames])
+
+    const onTimeUpdate = () => {
+        const time = videoRef.current.currentTime;
+        onUpdateTime(time);
+    }
+
+    const onDurationLoaded = () => {
+        const duration = videoRef.current.duration;
+        onLoadedDuration(duration);
+    }
+
     return (
         <div className="video-container">
-            <video className="video" controls src="/video/2.mp4" id="video2"></video>
+            <video
+                onLoadedMetadata={onDurationLoaded}
+                onTimeUpdate={onTimeUpdate}
+                onEnded={onPlayPause}
+                muted={muted}
+                ref={videoRef}
+                className="video"
+                src={"/video/" + source + ".mp4"}
+            ></video>
         </div>
     )
 }

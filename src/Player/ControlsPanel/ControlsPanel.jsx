@@ -4,12 +4,22 @@ import {Progress} from "./components/Progress";
 import {VolumePanel} from "./components/VolumePanel";
 import './ControlsPanel.scss';
 
-export const ControlsPanel = () => {
+export const ControlsPanel = (props) => {
     return (
         <div className="controls-panel">
-            <ControlsButton/>
-            <VolumePanel/>
-            <Progress/>
+            <ControlsButton onPlayPause={props.onPlayPause} playing={props.playing}/>
+            <VolumePanel
+                onMute={props.onMute}
+                muted={props.muted}
+                onUpdateVolume={props.onUpdateVolume}
+                clickFrames={props.clickFrames}
+            />
+            <Progress
+                currentTime={props.currentTime}
+                duration={props.duration}
+                clickFrames={props.clickFrames}
+                onUpdateProgress={props.onUpdateProgress}
+            />
         </div>
     )
 }

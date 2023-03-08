@@ -1,14 +1,26 @@
-import React from "react";
+import React, {useRef} from "react";
+import {getDisplayTime, getShift} from "../../../utils/utils";
 import './Progress.scss'
 
-export const Progress = () => {
+export const Progress = (props) => {
+    const progressRef = useRef(null);
+    const {currentTime, duration, onUpdateProgress} = props;
+    const currentProgress = currentTime / duration * 640;
+    const onClickProgress = (e) => {
+        const progressLength = progressRef.current.offsetWidth;
+        const framesTime = getShift(e, progressRef) / progressLength * duration;
+        onUpdateProgress(framesTime);
+    }
+
     return (
         <div className="progress">
             <div className="time-display">
-                <span id="currentTime">00:00</span> &nbsp;/&nbsp; <span id="duration">09:40</span>
+                <span>{getDisplayTime(currentTime)}</span>
+                &nbsp;/&nbsp;
+                <span>{getDisplayTime(duration)}</span>
             </div>
-            <div className="progress-bar">
-                <div className="current-progress"></div>
+            <div className="progress-bar" ref={progressRef} onClick={onClickProgress}>
+                <div className="current-progress" style={{width: currentProgress}}></div>
             </div>
         </div>
     )
