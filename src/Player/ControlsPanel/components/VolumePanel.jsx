@@ -18,13 +18,9 @@ export const VolumePanel = (props) => {
     }
 
     const onDragSlider = () => {
-        document.onmousemove = (e) => {
-            changeVolume(e);
-        };
-        document.onmouseup = () => {
-            document.onmousemove = null;
-        }
-    }
+        document.addEventListener('mousemove', changeVolume)
+        document.addEventListener('mouseup', (() => document.removeEventListener('mousemove', changeVolume)))
+    };
 
     return (
         <div className="volume-panel">
