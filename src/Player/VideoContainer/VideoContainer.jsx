@@ -25,6 +25,9 @@ export const VideoContainer = (props) => {
     const onDurationLoaded = () => {
         const duration = videoRef.current.duration;
         onLoadedDuration(duration);
+        if (playing === videoRef.current.paused) {
+            onPlayPause();
+        }
     }
 
     return (
