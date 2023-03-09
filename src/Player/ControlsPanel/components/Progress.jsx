@@ -5,7 +5,14 @@ import './Progress.scss'
 export const Progress = (props) => {
     const progressRef = useRef(null);
     const {currentTime, duration, onUpdateProgress} = props;
-    const currentProgress = currentTime / duration * 640;
+
+    const setCurrentProgressLength = () => {
+        if (currentTime) {
+            return currentTime / duration * progressRef.current.offsetWidth;
+        } else return 0;
+
+    }
+
     const onClickProgress = (e) => {
         const progressLength = progressRef.current.offsetWidth;
         const framesTime = getShift(e, progressRef) / progressLength * duration;
@@ -20,7 +27,7 @@ export const Progress = (props) => {
                 <span>{getDisplayTime(duration)}</span>
             </div>
             <div className="progress-bar" ref={progressRef} onClick={onClickProgress}>
-                <div className="current-progress" style={{width: currentProgress}}></div>
+                <div className="current-progress" style={{width: setCurrentProgressLength()}}></div>
             </div>
         </div>
     )
