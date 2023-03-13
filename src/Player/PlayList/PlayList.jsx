@@ -2,16 +2,17 @@ import React from "react";
 import "./PlayList.scss"
 
 export const PlayList = (props) => {
-    const {source, onUpdateSource} = props;
+    const {currentSource, onUpdateSource} = props;
     const list = ["1", "2"];
+
     return (
         <div className="playlist">
             {
                 list.map((item) =>
                     <button
                         key={item}
-                        className={item === source ? "active" : "list-item"}
-                        onClick={() => onUpdateSource(item.toString())}
+                        className={(`/video/${item}.mp4`) === currentSource ? "active" : "list-item"}
+                        onClick={() => onUpdateSource(`/video/${item}.mp4`)}
                     >video{item}</button>
                 )
             }

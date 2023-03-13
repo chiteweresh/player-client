@@ -6,7 +6,7 @@ import {VideoContainer} from "./VideoContainer/VideoContainer";
 
 export const Player = () => {
     const [videoState, setVideoState] = useState({
-        source: "2",
+        currentSource: "/video/2.mp4",
         playing: false,
         muted: false,
         duration: 0,
@@ -14,12 +14,12 @@ export const Player = () => {
         currentVolume: 0.5,
         clickFrames: null
     })
-    const {playing, muted, duration, currentTime, currentVolume, clickFrames, source} = videoState
+    const {playing, muted, duration, currentTime, currentVolume, clickFrames, currentSource} = videoState
 
     const sourceHandler = (item) => {
         setVideoState({
             ...videoState,
-            source: item
+            currentSource: item
         })
     }
 
@@ -73,7 +73,7 @@ export const Player = () => {
                 onLoadedDuration={getDurationHandler}
                 volume={currentVolume}
                 clickFrames={clickFrames}
-                source={source}
+                currentSource={currentSource}
             />
             <ControlsPanel
                 playing={playing}
@@ -84,11 +84,10 @@ export const Player = () => {
                 duration={duration}
                 volume={currentVolume}
                 onUpdateVolume={volumeHandler}
-                clickFrames={clickFrames}
                 onUpdateProgress={progressHandler}
             />
             <PlayList
-                source={source}
+                currentSource={currentSource}
                 onUpdateSource={sourceHandler}/>
         </div>
     );
