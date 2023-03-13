@@ -19,6 +19,7 @@ export const Player = () => {
     const sourceHandler = (item) => {
         setVideoState({
             ...videoState,
+            playing: playing ? false : (playing),
             currentSource: item
         })
     }
@@ -47,7 +48,6 @@ export const Player = () => {
             duration: duration
         })
     }
-
 
     const volumeHandler = (volume) => {
         setVideoState({
