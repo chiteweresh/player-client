@@ -7,6 +7,10 @@
   display: inline-list-item;
   align-items: center;
 
+  button:hover {
+    cursor: pointer;
+  }
+
   .list-item {
     height: $button-height;
     width: 2*$button-height;

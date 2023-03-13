@@ -3,8 +3,8 @@ import "./PlayList.scss"
 
 export const PlayList = (props) => {
     const {currentSource, onUpdateSource} = props;
-    const list = ["1", "2"];
-
+    const list = [1, 2, 3];
+    
     return (
         <div className="playlist">
             {

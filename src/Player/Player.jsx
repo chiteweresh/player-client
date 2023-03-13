@@ -14,7 +14,7 @@ export const Player = () => {
         currentVolume: 0.5,
         clickFrames: null
     })
-    const {playing, muted, duration, currentTime, currentVolume, clickFrames, currentSource} = videoState
+    const {playing, muted, duration, currentTime, currentVolume, clickFrames, currentSource} = videoState;
 
     const sourceHandler = (item) => {
         setVideoState({

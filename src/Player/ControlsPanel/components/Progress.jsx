@@ -10,7 +10,6 @@ export const Progress = (props) => {
         if (currentTime) {
             return currentTime / duration * progressRef.current.offsetWidth;
         } else return 0;
-
     }
 
     const onClickProgress = (e) => {
