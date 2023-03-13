@@ -84,7 +84,6 @@ export const Player = () => {
                 duration={duration}
                 volume={currentVolume}
                 onUpdateVolume={volumeHandler}
-                clickFrames={clickFrames}
                 onUpdateProgress={progressHandler}
             />
             <PlayList

@@ -12,12 +12,10 @@ export const ControlsPanel = (props) => {
                 onMute={props.onMute}
                 muted={props.muted}
                 onUpdateVolume={props.onUpdateVolume}
-                clickFrames={props.clickFrames}
             />
             <Progress
                 currentTime={props.currentTime}
                 duration={props.duration}
-                clickFrames={props.clickFrames}
                 onUpdateProgress={props.onUpdateProgress}
             />
         </div>
