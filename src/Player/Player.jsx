@@ -1,6 +1,5 @@
 import {useState} from "react";
 import {ControlsPanel} from "./ControlsPanel/ControlsPanel";
-import './Player.scss';
 import {PlayList} from "./PlayList/PlayList";
 import {VideoContainer} from "./VideoContainer/VideoContainer";
 

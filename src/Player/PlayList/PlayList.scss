@@ -4,8 +4,7 @@
   width: $video-width;
   margin: $margin-base;
   border: $base-border;
-  display: inline-list-item;
-  align-items: center;
+  display: inline-block;
 
   button:hover {
     cursor: pointer;
@@ -14,21 +13,13 @@
   .list-item {
     height: $button-height;
     width: 2*$button-height;
-    padding: 5px;
-    margin: 10px;
+    margin: 9px;
     font-size: 1rem;
     border: $base-border;
     border-radius: 4px;
   }
 
   .active {
-    height: $button-height;
-    width: 2*$button-height;
-    padding: 5px;
-    margin: 10px;
-    font-size: 1rem;
-    border: $base-border;
     background-color: gold;
-    border-radius: 4px;
   }
 }

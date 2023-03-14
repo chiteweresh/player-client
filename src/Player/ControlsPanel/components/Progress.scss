@@ -3,7 +3,7 @@
 .progress {
   .time-display {
     height: $time-display-height;
-    display: flex;
+    display: inline-flex;
     padding: 0 10px;
     align-items: center;
   }

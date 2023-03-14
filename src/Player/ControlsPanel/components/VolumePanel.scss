@@ -5,12 +5,10 @@
   display: flex;
   position: absolute;
   right: 0;
-  width: 150px;
 
   .volume-speaker {
     border: none;
     height: $button-height;
-    display: flex;
     background-color: transparent;
     padding: 0 0 0 1px;
   }
