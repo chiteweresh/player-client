@@ -8,14 +8,14 @@ const Progress = ({ currentTime, duration, onUpdateProgress }) => {
 
   const setCurrentProgressLength = () => {
     if (currentTime) {
-      return currentTime / duration * progressRef.current.offsetWidth;
+      return (currentTime / duration) * progressRef.current.offsetWidth;
     }
     return 0;
   };
 
   const onClickProgress = (e) => {
     const progressLength = progressRef.current.offsetWidth;
-    const framesTime = getShift(e, progressRef) / progressLength * duration;
+    const framesTime = (getShift(e, progressRef) / progressLength) * duration;
     onUpdateProgress(framesTime);
   };
 
@@ -27,7 +27,10 @@ const Progress = ({ currentTime, duration, onUpdateProgress }) => {
         <span>{getDisplayTime(duration)}</span>
       </div>
       <div className="progress-bar" ref={progressRef} onClick={onClickProgress}>
-        <div className="current-progress" style={{ width: setCurrentProgressLength() }} />
+        <div
+          className="current-progress"
+          style={{ width: setCurrentProgressLength() }}
+        />
       </div>
     </div>
   );

@@ -15,7 +15,7 @@ const VideoContainer = ({
   const videoRef = useRef(null);
 
   useEffect(() => {
-    playing ? (videoRef.current.play()) : (videoRef.current.pause());
+    playing ? videoRef.current.play() : videoRef.current.pause();
   }, [playing]);
 
   useEffect(() => {

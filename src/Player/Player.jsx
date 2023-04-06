@@ -14,13 +14,19 @@ const Player = () => {
     clickFrames: null,
   });
   const {
-    playing, muted, duration, currentTime, currentVolume, clickFrames, currentSource,
+    playing,
+    muted,
+    duration,
+    currentTime,
+    currentVolume,
+    clickFrames,
+    currentSource,
   } = videoState;
 
   const sourceHandler = (item) => {
     setVideoState({
       ...videoState,
-      playing: playing ? false : (playing),
+      playing: playing ? false : playing,
       currentSource: item,
     });
   };
@@ -87,10 +93,7 @@ const Player = () => {
         onUpdateVolume={volumeHandler}
         onUpdateProgress={progressHandler}
       />
-      <PlayList
-        currentSource={currentSource}
-        onUpdateSource={sourceHandler}
-      />
+      <PlayList currentSource={currentSource} onUpdateSource={sourceHandler} />
     </div>
   );
 };
