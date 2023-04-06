@@ -1,23 +1,43 @@
-import React from "react";
-import {ControlsButton} from "./components/ControlsButton";
-import {Progress} from "./components/Progress";
-import {VolumePanel} from "./components/VolumePanel";
+import React from 'react';
+import PropTypes from 'prop-types';
+import ControlsButton from './components/ControlsButton';
+import Progress from './Progress/Progress';
+import VolumePanel from './components/VolumePanel';
 import './ControlsPanel.scss';
 
-export const ControlsPanel = (props) => {
-    return (
-        <div className="controls-panel">
-            <ControlsButton onPlayPause={props.onPlayPause} playing={props.playing}/>
-            <VolumePanel
-                onMute={props.onMute}
-                muted={props.muted}
-                onUpdateVolume={props.onUpdateVolume}
-            />
-            <Progress
-                currentTime={props.currentTime}
-                duration={props.duration}
-                onUpdateProgress={props.onUpdateProgress}
-            />
-        </div>
-    )
-}
+const ControlsPanel = ({
+  currentTime,
+  duration,
+  muted,
+  onMute,
+  onPlayPause,
+  onUpdateProgress,
+  onUpdateVolume,
+  playing,
+}) => (
+  <div className="controls-panel">
+    <ControlsButton onPlayPause={onPlayPause} playing={playing} />
+    <VolumePanel
+      onMute={onMute}
+      muted={muted}
+      onUpdateVolume={onUpdateVolume}
+    />
+    <Progress
+      currentTime={currentTime}
+      duration={duration}
+      onUpdateProgress={onUpdateProgress}
+    />
+  </div>
+);
+
+ControlsPanel.propTypes = {
+  currentTime: PropTypes.number,
+  duration: PropTypes.number,
+  muted: PropTypes.bool,
+  onMute: PropTypes.func.isRequired,
+  onPlayPause: PropTypes.func.isRequired,
+  onUpdateProgress: PropTypes.func.isRequired,
+  onUpdateVolume: PropTypes.func.isRequired,
+  playing: PropTypes.bool,
+};
+export default ControlsPanel;
