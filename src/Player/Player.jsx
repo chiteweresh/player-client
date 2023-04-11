@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import ControlsPanel from './ControlsPanel/ControlsPanel';
 import PlayList from './PlayList/PlayList';
 import VideoContainer from './VideoContainer/VideoContainer';
+import ControlPanel from './ControlPanel/ControlPanel';
 
 const Player = () => {
   const [videoState, setVideoState] = useState({
@@ -82,7 +82,7 @@ const Player = () => {
         clickFrames={clickFrames}
         currentSource={currentSource}
       />
-      <ControlsPanel
+      <ControlPanel
         playing={playing}
         onPlayPause={playPauseHandler}
         muted={muted}

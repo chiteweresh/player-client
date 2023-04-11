@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
-import './VideoContainer.scss';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { baseBorder, baseMargin, dimensions } from '../../style/theme';
 
 const VideoContainer = ({
   playing,
@@ -37,7 +38,7 @@ const VideoContainer = ({
   };
 
   return (
-    <div className="video-container">
+    <Container>
       <video
         onLoadedMetadata={onDurationLoaded}
         onTimeUpdate={onTimeUpdate}
@@ -47,9 +48,25 @@ const VideoContainer = ({
         className="video"
         src={currentSource}
       />
-    </div>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  width: ${dimensions.videoWidth};
+  height: ${dimensions.videoHeight};
+  margin-left: ${baseMargin};
+  margin-top: 50px;
+  border: ${baseBorder};
+  .video {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    max-width: ${dimensions.videoWidth};
+    max-height: ${dimensions.videoHeight};
+  }
+`;
 
 VideoContainer.propTypes = {
   playing: PropTypes.bool,
