@@ -35,6 +35,7 @@ const ControlPanel = ({
       duration={duration}
       subtitleSwitch={subtitleSwitch}
       subtitle={subtitle}
+      onUpdateProgress={onUpdateProgress}
     />
   </Container>
 );

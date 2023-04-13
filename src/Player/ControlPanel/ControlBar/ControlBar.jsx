@@ -20,11 +20,16 @@ const ControlsBar = ({
   duration,
   subtitleSwitch,
   subtitle,
+  onUpdateProgress,
 }) => (
   <>
-    <ForwardBtn />
+    <RewindBtn currentTime={currentTime} onUpdateProgress={onUpdateProgress} />
     <PlayPauseBtn onPlayPause={onPlayPause} playing={playing} />
-    <RewindBtn />
+    <ForwardBtn
+      currentTime={currentTime}
+      onUpdateProgress={onUpdateProgress}
+      duration={duration}
+    />
     <TimeDisplay currentTime={currentTime} duration={duration} />
     <VolumeControlBar
       onMute={onMute}
@@ -47,5 +52,6 @@ ControlsBar.propTypes = {
   duration: PropTypes.number,
   subtitleSwitch: PropTypes.func.isRequired,
   subtitle: PropTypes.bool,
+  onUpdateProgress: PropTypes.func.isRequired,
 };
 export default ControlsBar;

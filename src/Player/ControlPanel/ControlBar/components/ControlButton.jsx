@@ -18,17 +18,31 @@ export const PlayPauseBtn = ({ onPlayPause, playing }) => {
   );
 };
 
-export const ForwardBtn = () => (
-  <ControlBtn type="button">
-    <img src={forward} alt="forward" />
-  </ControlBtn>
-);
+export const ForwardBtn = ({ currentTime, onUpdateProgress, duration }) => {
+  const onClick = () => {
+    if (currentTime <= duration - 5) {
+      onUpdateProgress(currentTime + 5);
+    } else onUpdateProgress(duration);
+  };
+  return (
+    <ControlBtn type="button" onClick={onClick}>
+      <img src={forward} alt="forward" />
+    </ControlBtn>
+  );
+};
 
-export const RewindBtn = () => (
-  <ControlBtn type="button">
-    <img src={rewind} alt="rewind" />
-  </ControlBtn>
-);
+export const RewindBtn = ({ currentTime, onUpdateProgress }) => {
+  const onClick = () => {
+    if (currentTime >= 5) {
+      onUpdateProgress(currentTime - 5);
+    } else onUpdateProgress(0);
+  };
+  return (
+    <ControlBtn type="button" onClick={onClick}>
+      <img src={rewind} alt="rewind" />
+    </ControlBtn>
+  );
+};
 
 export const SpeakerMuteBtn = ({ onMute, muted, volume }) => (
   <ControlBtn type="button" onClick={onMute}>
@@ -45,6 +59,17 @@ export const SubtitleBtn = ({ subtitle, subtitleSwitch }) => (
 PlayPauseBtn.propTypes = {
   onPlayPause: PropTypes.func.isRequired,
   playing: PropTypes.bool,
+};
+
+ForwardBtn.propTypes = {
+  currentTime: PropTypes.number,
+  onUpdateProgress: PropTypes.func.isRequired,
+  duration: PropTypes.number,
+};
+
+RewindBtn.propTypes = {
+  currentTime: PropTypes.number,
+  onUpdateProgress: PropTypes.func.isRequired,
 };
 
 SpeakerMuteBtn.propTypes = {
