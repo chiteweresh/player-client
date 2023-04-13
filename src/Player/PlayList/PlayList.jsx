@@ -13,8 +13,8 @@ const PlayList = ({ currentSource, onUpdateSource }) => {
           <PlayListItem
             type="button"
             key={item}
-            active={`/video/${item}.mp4` === currentSource}
-            onClick={() => onUpdateSource(`/video/${item}.mp4`)}
+            active={item === currentSource}
+            onClick={() => onUpdateSource(item)}
           >
             video {item}
           </PlayListItem>
@@ -34,6 +34,8 @@ const Container = styled.div`
 `;
 
 const PlayListItem = styled.button`
+  font-weight: bold;
+  font-size: 1rem;
   margin: 9px;
   border: ${baseBorder};
   height: ${dimensions.buttonHeight};
@@ -45,7 +47,7 @@ const PlayListItem = styled.button`
 `;
 
 PlayList.propTypes = {
-  currentSource: PropTypes.string,
+  currentSource: PropTypes.number,
   onUpdateSource: PropTypes.func.isRequired,
 };
 export default PlayList;

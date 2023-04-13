@@ -16,6 +16,7 @@ const TimeDisplay = ({ currentTime, duration }) => {
 
 const Wrapper = styled.div`
   height: ${dimensions.buttonHeight};
+  width: 150px;
   float: left;
   padding: 0 10px;
   display: flex;

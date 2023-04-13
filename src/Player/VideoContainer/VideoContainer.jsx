@@ -12,6 +12,7 @@ const VideoContainer = ({
   onLoadedDuration,
   clickFrames,
   currentSource,
+  subtitle,
 }) => {
   const videoRef = useRef(null);
 
@@ -26,6 +27,12 @@ const VideoContainer = ({
   useEffect(() => {
     videoRef.current.currentTime = clickFrames;
   }, [clickFrames]);
+
+  useEffect(() => {
+    if (subtitle) {
+      videoRef.current.textTracks[0].mode = 'showing';
+    } else videoRef.current.textTracks[0].mode = 'hidden';
+  }, [subtitle]);
 
   const onTimeUpdate = () => {
     const time = videoRef.current.currentTime;
@@ -46,8 +53,16 @@ const VideoContainer = ({
         muted={muted}
         ref={videoRef}
         className="video"
-        src={currentSource}
-      />
+        src={`/video/${currentSource}.mp4`}
+      >
+        <track
+          default
+          kind="subtitles"
+          src={`/${currentSource}.vtt`}
+          srcLang="en"
+          label="from vtt file"
+        />
+      </video>
     </Container>
   );
 };
@@ -76,6 +91,7 @@ VideoContainer.propTypes = {
   onUpdateTime: PropTypes.func.isRequired,
   onLoadedDuration: PropTypes.func.isRequired,
   clickFrames: PropTypes.number,
-  currentSource: PropTypes.string,
+  currentSource: PropTypes.number,
+  subtitle: PropTypes.bool,
 };
 export default VideoContainer;

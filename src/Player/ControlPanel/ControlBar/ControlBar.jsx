@@ -7,6 +7,7 @@ import {
 } from './components/ControlButton';
 import VolumeControlBar from './VolumeControlBar';
 import TimeDisplay from './components/TimeDisplay';
+import SubtitleToggle from './components/SubtitleToggle';
 
 const ControlsBar = ({
   onPlayPause,
@@ -17,6 +18,8 @@ const ControlsBar = ({
   volume,
   currentTime,
   duration,
+  subtitleSwitch,
+  subtitle,
 }) => (
   <>
     <ForwardBtn />
@@ -29,6 +32,7 @@ const ControlsBar = ({
       onUpdateVolume={onUpdateVolume}
       volume={volume}
     />
+    <SubtitleToggle subtitle={subtitle} subtitleSwitch={subtitleSwitch} />
   </>
 );
 
@@ -41,5 +45,7 @@ ControlsBar.propTypes = {
   volume: PropTypes.number,
   currentTime: PropTypes.number,
   duration: PropTypes.number,
+  subtitleSwitch: PropTypes.func.isRequired,
+  subtitle: PropTypes.bool,
 };
 export default ControlsBar;

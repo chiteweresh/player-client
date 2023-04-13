@@ -10,7 +10,7 @@ export const colors = {
 export const dimensions = {
   videoWidth: '640px',
   videoHeight: '360px',
-  controlPanelHeight: '41px',
+  controlPanelHeight: '43px',
   buttonHeight: '36px',
   volumeBarHeight: '5px',
   fullVolumeWidth: '100px',

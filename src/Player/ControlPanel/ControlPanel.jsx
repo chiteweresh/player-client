@@ -15,6 +15,8 @@ const ControlPanel = ({
   duration,
   onUpdateProgress,
   currentTime,
+  subtitleSwitch,
+  subtitle,
 }) => (
   <Container>
     <ProgressBar
@@ -31,6 +33,8 @@ const ControlPanel = ({
       volume={volume}
       currentTime={currentTime}
       duration={duration}
+      subtitleSwitch={subtitleSwitch}
+      subtitle={subtitle}
     />
   </Container>
 );
@@ -53,5 +57,7 @@ ControlPanel.propTypes = {
   playing: PropTypes.bool,
   onUpdateVolume: PropTypes.func.isRequired,
   volume: PropTypes.number,
+  subtitleSwitch: PropTypes.func.isRequired,
+  subtitle: PropTypes.bool,
 };
 export default ControlPanel;

@@ -5,13 +5,14 @@ import ControlPanel from './ControlPanel/ControlPanel';
 
 const Player = () => {
   const [videoState, setVideoState] = useState({
-    currentSource: '/video/2.mp4',
+    currentSource: 2,
     playing: false,
     muted: false,
     duration: 0,
     currentTime: 0,
     currentVolume: 0.5,
     clickFrames: null,
+    subtitle: true,
   });
   const {
     playing,
@@ -21,8 +22,15 @@ const Player = () => {
     currentVolume,
     clickFrames,
     currentSource,
+    subtitle,
   } = videoState;
 
+  const subtitleSwitch = () => {
+    setVideoState({
+      ...videoState,
+      subtitle: !videoState.subtitle,
+    });
+  };
   const sourceHandler = (item) => {
     setVideoState({
       ...videoState,
@@ -81,6 +89,7 @@ const Player = () => {
         volume={currentVolume}
         clickFrames={clickFrames}
         currentSource={currentSource}
+        subtitle={subtitle}
       />
       <ControlPanel
         playing={playing}
@@ -92,6 +101,8 @@ const Player = () => {
         volume={currentVolume}
         onUpdateVolume={volumeHandler}
         onUpdateProgress={progressHandler}
+        subtitleSwitch={subtitleSwitch}
+        subtitle={subtitle}
       />
       <PlayList currentSource={currentSource} onUpdateSource={sourceHandler} />
     </div>
