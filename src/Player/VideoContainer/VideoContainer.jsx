@@ -54,6 +54,7 @@ const VideoContainer = ({
         ref={videoRef}
         className="video"
         src={`/video/${currentSource}.mp4`}
+        poster="/video/cover.jpg"
       >
         <track
           default
