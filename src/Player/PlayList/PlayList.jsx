@@ -7,20 +7,18 @@ const PlayList = ({ currentSource, onUpdateSource }) => {
   const list = [1, 2, 3];
 
   return (
-    <div className="playlist">
-      <Container>
-        {list.map((item) => (
-          <PlayListItem
-            type="button"
-            key={item}
-            active={item === currentSource}
-            onClick={() => onUpdateSource(item)}
-          >
-            video {item}
-          </PlayListItem>
-        ))}
-      </Container>
-    </div>
+    <Container>
+      {list.map((item) => (
+        <PlayListItem
+          type="button"
+          key={item}
+          active={item === currentSource}
+          onClick={() => onUpdateSource(item)}
+        >
+          video {item}
+        </PlayListItem>
+      ))}
+    </Container>
   );
 };
 

@@ -54,12 +54,12 @@ const VideoContainer = ({
         ref={videoRef}
         className="video"
         src={`/video/${currentSource}.mp4`}
-        poster="/video/cover.jpg"
+        poster={`/video/${currentSource}.jpg`}
       >
         <track
           default
           kind="subtitles"
-          src={`/${currentSource}.vtt`}
+          src={`/video/${currentSource}.vtt`}
           srcLang="en"
           label="from vtt file"
         />
