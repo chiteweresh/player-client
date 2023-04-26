@@ -1,46 +1,98 @@
-import React, {useEffect, useRef} from "react";
-import "./VideoContainer.scss"
+import React, { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { baseBorder, baseMargin, dimensions } from '../../style/theme';
 
-export const VideoContainer = (props) => {
-    const videoRef = useRef(null);
-    const {playing, onPlayPause, muted, volume, onUpdateTime, onLoadedDuration, clickFrames, currentSource} = props;
+const VideoContainer = ({
+  playing,
+  onPlayPause,
+  muted,
+  volume,
+  onUpdateTime,
+  onLoadedDuration,
+  clickFrames,
+  currentSource,
+  subtitle,
+}) => {
+  const videoRef = useRef(null);
 
-    useEffect(() => {
-        !playing ? (videoRef.current.pause()) : (videoRef.current.play());
-    }, [playing])
+  useEffect(() => {
+    playing ? videoRef.current.play() : videoRef.current.pause();
+  }, [playing]);
 
-    useEffect(() => {
-        videoRef.current.volume = volume;
-    }, [volume])
+  useEffect(() => {
+    videoRef.current.volume = volume;
+  }, [volume]);
 
-    useEffect(() => {
-        videoRef.current.currentTime = clickFrames;
-    }, [clickFrames])
+  useEffect(() => {
+    videoRef.current.currentTime = clickFrames;
+  }, [clickFrames]);
 
-    const onTimeUpdate = () => {
-        const time = videoRef.current.currentTime;
-        onUpdateTime(time);
-    }
+  useEffect(() => {
+    if (subtitle) {
+      videoRef.current.textTracks[0].mode = 'showing';
+    } else videoRef.current.textTracks[0].mode = 'hidden';
+  }, [subtitle]);
 
-    const onDurationLoaded = () => {
-        const duration = videoRef.current.duration;
-        onLoadedDuration(duration);
-        if (playing === videoRef.current.paused) {
-            onPlayPause();
-        }
-    }
+  const onTimeUpdate = () => {
+    const time = videoRef.current.currentTime;
+    onUpdateTime(time);
+  };
 
-    return (
-        <div className="video-container">
-            <video
-                onLoadedMetadata={onDurationLoaded}
-                onTimeUpdate={onTimeUpdate}
-                onEnded={onPlayPause}
-                muted={muted}
-                ref={videoRef}
-                className="video"
-                src={currentSource}
-            ></video>
-        </div>
-    )
-}
+  const onDurationLoaded = () => {
+    const { duration } = videoRef.current;
+    onLoadedDuration(duration);
+  };
+
+  return (
+    <Container>
+      <video
+        onLoadedMetadata={onDurationLoaded}
+        onTimeUpdate={onTimeUpdate}
+        onEnded={onPlayPause}
+        muted={muted}
+        ref={videoRef}
+        className="video"
+        src={`/video/${currentSource}.mp4`}
+        poster="/video/cover.jpg"
+      >
+        <track
+          default
+          kind="subtitles"
+          src={`/${currentSource}.vtt`}
+          srcLang="en"
+          label="from vtt file"
+        />
+      </video>
+    </Container>
+  );
+};
+
+const Container = styled.div`
+  width: ${dimensions.videoWidth};
+  height: ${dimensions.videoHeight};
+  margin-left: ${baseMargin};
+  margin-top: 50px;
+  border: ${baseBorder};
+  .video {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    max-width: ${dimensions.videoWidth};
+    max-height: ${dimensions.videoHeight};
+  }
+`;
+
+VideoContainer.propTypes = {
+  playing: PropTypes.bool,
+  onPlayPause: PropTypes.func.isRequired,
+  muted: PropTypes.bool,
+  volume: PropTypes.number,
+  onUpdateTime: PropTypes.func.isRequired,
+  onLoadedDuration: PropTypes.func.isRequired,
+  clickFrames: PropTypes.number,
+  currentSource: PropTypes.number,
+  subtitle: PropTypes.bool,
+};
+export default VideoContainer;

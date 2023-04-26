@@ -1,21 +1,53 @@
-import React from "react";
-import "./PlayList.scss"
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { baseBorder, baseMargin, colors, dimensions } from '../../style/theme';
 
-export const PlayList = (props) => {
-    const {currentSource, onUpdateSource} = props;
-    const list = ["1", "2"];
+const PlayList = ({ currentSource, onUpdateSource }) => {
+  const list = [1, 2, 3];
 
-    return (
-        <div className="playlist">
-            {
-                list.map((item) =>
-                    <button
-                        key={item}
-                        className={(`/video/${item}.mp4`) === currentSource ? "active" : "list-item"}
-                        onClick={() => onUpdateSource(`/video/${item}.mp4`)}
-                    >video{item}</button>
-                )
-            }
-        </div>
-    )
-}
+  return (
+    <div className="playlist">
+      <Container>
+        {list.map((item) => (
+          <PlayListItem
+            type="button"
+            key={item}
+            active={item === currentSource}
+            onClick={() => onUpdateSource(item)}
+          >
+            video {item}
+          </PlayListItem>
+        ))}
+      </Container>
+    </div>
+  );
+};
+
+const Container = styled.div`
+  width: ${dimensions.videoWidth};
+  margin-left: ${baseMargin};
+  margin-top: ${baseMargin};
+  border: ${baseBorder};
+  display: inline-flex;
+  align-items: center;
+`;
+
+const PlayListItem = styled.button`
+  font-weight: bold;
+  font-size: 1rem;
+  margin: 9px;
+  border: ${baseBorder};
+  height: ${dimensions.buttonHeight};
+  width: 75px;
+  border-radius: 4px;
+  background-color: ${(props) =>
+    props.active ? colors.activeItem : colors.background};
+  cursor: pointer;
+`;
+
+PlayList.propTypes = {
+  currentSource: PropTypes.number,
+  onUpdateSource: PropTypes.func.isRequired,
+};
+export default PlayList;
