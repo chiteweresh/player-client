@@ -1,19 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import pause from '../../../../svg/pause.svg';
-import play from '../../../../svg/play.svg';
-import forward from '../../../../svg/forward.svg';
-import rewind from '../../../../svg/rewind.svg';
-import speaker from '../../../../svg/speaker.svg';
-import mute from '../../../../svg/mute.svg';
-import subtitleOn from '../../../../svg/subtitleOn.svg';
-import subtitleOff from '../../../../svg/subtitleOff.svg';
+import { ReactComponent as Pause } from '../../../../svg/pause.svg';
+import { ReactComponent as Play } from '../../../../svg/play.svg';
+import { ReactComponent as Forward } from '../../../../svg/forward.svg';
+import { ReactComponent as Rewind } from '../../../../svg/rewind.svg';
+import { ReactComponent as Speaker } from '../../../../svg/speaker.svg';
+import { ReactComponent as Mute } from '../../../../svg/mute.svg';
+import { ReactComponent as Subtitle } from '../../../../svg/subtitle.svg';
 import ControlBtn from '../../../../utils/buttons';
 
 export const PlayPauseBtn = ({ onPlayPause, playing }) => {
   return (
     <ControlBtn type="button" onClick={onPlayPause}>
-      <img src={playing ? pause : play} alt="play" />
+      {playing ? <Pause /> : <Play />}
     </ControlBtn>
   );
 };
@@ -26,7 +25,7 @@ export const ForwardBtn = ({ currentTime, onUpdateProgress, duration }) => {
   };
   return (
     <ControlBtn type="button" onClick={onClick}>
-      <img src={forward} alt="forward" />
+      <Forward />
     </ControlBtn>
   );
 };
@@ -39,20 +38,20 @@ export const RewindBtn = ({ currentTime, onUpdateProgress }) => {
   };
   return (
     <ControlBtn type="button" onClick={onClick}>
-      <img src={rewind} alt="rewind" />
+      <Rewind />
     </ControlBtn>
   );
 };
 
 export const SpeakerMuteBtn = ({ onMute, muted, volume }) => (
   <ControlBtn type="button" onClick={onMute}>
-    <img src={muted || volume === 0 ? mute : speaker} alt="mute" />
+    {muted || volume === 0 ? <Mute /> : <Speaker />}
   </ControlBtn>
 );
 
 export const SubtitleBtn = ({ subtitle, subtitleSwitch }) => (
   <ControlBtn type="button" onClick={subtitleSwitch}>
-    <img src={subtitle ? subtitleOn : subtitleOff} alt="subtitle" />
+    <Subtitle fill={subtitle ? 'black' : 'lightgray'} />
   </ControlBtn>
 );
 
