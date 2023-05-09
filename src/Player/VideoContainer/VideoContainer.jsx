@@ -29,9 +29,10 @@ const VideoContainer = ({
   }, [clickFrames]);
 
   useEffect(() => {
-    if (subtitle) {
-      videoRef.current.textTracks[0].mode = 'showing';
-    } else videoRef.current.textTracks[0].mode = 'hidden';
+    const textTrack = videoRef.current.textTracks[0];
+    if (textTrack) {
+      subtitle ? (textTrack.mode = 'showing') : (textTrack.mode = 'hidden');
+    }
   }, [subtitle]);
 
   const onTimeUpdate = () => {

@@ -12,18 +12,19 @@ const ProgressBar = ({ currentTime, duration, onUpdateProgress }) => {
     onUpdateProgress(framesTime);
   };
   const setCurrentProgressWidth = () => {
-    return (currentTime / duration) * progressRef.current.offsetWidth;
+    if (currentTime) {
+      return (currentTime / duration) * progressRef.current.offsetWidth;
+    }
+    return 0;
   };
   return (
-    <Progress2 ref={progressRef} onClick={onClickProgress}>
-      <CurrentProgress
-        style={{ width: currentTime ? setCurrentProgressWidth() : 0 }}
-      />
-    </Progress2>
+    <Progress ref={progressRef} onClick={onClickProgress}>
+      <CurrentProgress style={{ width: setCurrentProgressWidth() }} />
+    </Progress>
   );
 };
 
-const Progress2 = styled.div`
+const Progress = styled.div`
   position: relative;
   background-color: ${colors.background};
   height: ${dimensions.progressHeight};
@@ -32,7 +33,6 @@ const Progress2 = styled.div`
 
 const CurrentProgress = styled.div`
   height: ${dimensions.progressHeight};
-  width: 20px;
   background-color: ${colors.currentProgress};
   position: absolute;
   top: 0;
