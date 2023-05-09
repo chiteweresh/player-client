@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import dashjs from 'dashjs';
 import { baseBorder, baseMargin, dimensions } from '../../style/theme';
+import { playList } from '../../utils/playList';
 
 const VideoContainer = ({
   playing,
@@ -15,6 +17,18 @@ const VideoContainer = ({
   subtitle,
 }) => {
   const videoRef = useRef(null);
+  const mediaPlayer = dashjs.MediaPlayer().create();
+
+  useEffect(() => {
+    mediaPlayer.initialize(
+      videoRef.current,
+      playList[currentSource].url,
+      false
+    );
+    return () => {
+      mediaPlayer.reset();
+    };
+  }, [currentSource]);
 
   useEffect(() => {
     playing ? videoRef.current.play() : videoRef.current.pause();
@@ -53,18 +67,10 @@ const VideoContainer = ({
         onEnded={onPlayPause}
         muted={muted}
         ref={videoRef}
-        className="video"
-        src={`/video/${currentSource}.mp4`}
-        poster={`/video/${currentSource}.jpg`}
-      >
-        <track
-          default
-          kind="subtitles"
-          src={`/video/${currentSource}.vtt`}
-          srcLang="en"
-          label="from vtt file"
-        />
-      </video>
+        className="dashVideo"
+        poster={playList[currentSource].poster}
+        controls
+      />
     </Container>
   );
 };
@@ -75,7 +81,7 @@ const Container = styled.div`
   margin-left: ${baseMargin};
   margin-top: 50px;
   border: ${baseBorder};
-  .video {
+  .dashVideo {
     position: relative;
     left: 50%;
     top: 50%;
