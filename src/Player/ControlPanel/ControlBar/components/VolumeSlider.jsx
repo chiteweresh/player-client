@@ -35,16 +35,16 @@ const VolumeSlider = ({ currentVolume, onUpdateVolume }) => {
 
 const VolumeBar = styled.div`
   background-color: ${colors.background};
-  height: ${dimensions.volumeBarHeight};
+  height: ${dimensions.volumeBarHeight}px;
   margin-right: 10px;
   border-radius: 4px;
-  width: ${dimensions.fullVolumeWidth};
+  width: ${dimensions.fullVolumeWidth}px;
   position: relative;
 `;
 
 const CurrentVolume = styled.div`
   background-color: ${colors.currentVolume};
-  height: ${dimensions.volumeBarHeight};
+  height: ${dimensions.volumeBarHeight}px;
   border-radius: 4px;
   position: absolute;
   top: 0;
@@ -52,8 +52,8 @@ const CurrentVolume = styled.div`
 `;
 
 const Slider = styled.div`
-  width: ${dimensions.sliderSize};
-  height: ${dimensions.sliderSize};
+  width: ${dimensions.sliderSize}px;
+  height: ${dimensions.sliderSize}px;
   background-color: ${colors.white};
   border-radius: 50%;
   border: ${colors.background} 1px solid;

@@ -27,12 +27,12 @@ const ProgressBar = ({ currentTime, duration, onUpdateProgress }) => {
 const Progress = styled.div`
   position: relative;
   background-color: ${colors.background};
-  height: ${dimensions.progressHeight};
-  width: ${dimensions.progressWidth};
+  height: ${dimensions.progressHeight}px;
+  width: ${dimensions.progressWidth}px;
 `;
 
 const CurrentProgress = styled.div`
-  height: ${dimensions.progressHeight};
+  height: ${dimensions.progressHeight}px;
   background-color: ${colors.currentProgress};
   position: absolute;
   top: 0;

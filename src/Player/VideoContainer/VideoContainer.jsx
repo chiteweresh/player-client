@@ -18,13 +18,10 @@ const VideoContainer = ({
 }) => {
   const videoRef = useRef(null);
   const mediaPlayer = dashjs.MediaPlayer().create();
+  const index = currentSource - 1;
 
   useEffect(() => {
-    mediaPlayer.initialize(
-      videoRef.current,
-      playList[currentSource].url,
-      false
-    );
+    mediaPlayer.initialize(videoRef.current, playList[index].url, false);
     return () => {
       mediaPlayer.reset();
     };
@@ -45,7 +42,7 @@ const VideoContainer = ({
   useEffect(() => {
     const textTrack = videoRef.current.textTracks[0];
     if (textTrack) {
-      subtitle ? (textTrack.mode = 'showing') : (textTrack.mode = 'hidden');
+      textTrack.mode = subtitle ? 'showing' : 'hidden';
     }
   }, [subtitle]);
 
@@ -68,7 +65,7 @@ const VideoContainer = ({
         muted={muted}
         ref={videoRef}
         className="dashVideo"
-        poster={playList[currentSource].poster}
+        poster={playList[index].poster}
         controls
       />
     </Container>
@@ -76,8 +73,8 @@ const VideoContainer = ({
 };
 
 const Container = styled.div`
-  width: ${dimensions.videoWidth};
-  height: ${dimensions.videoHeight};
+  width: ${dimensions.videoWidth}px;
+  height: ${dimensions.videoHeight}px;
   margin-left: ${baseMargin};
   margin-top: 50px;
   border: ${baseBorder};
@@ -86,8 +83,8 @@ const Container = styled.div`
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    max-width: ${dimensions.videoWidth};
-    max-height: ${dimensions.videoHeight};
+    max-width: ${dimensions.videoWidth}px;
+    max-height: ${dimensions.videoHeight}px;
   }
 `;
 

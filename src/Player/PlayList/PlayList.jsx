@@ -2,20 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { baseBorder, baseMargin, colors, dimensions } from '../../style/theme';
+import { playList } from '../../utils/playList';
 
 const PlayList = ({ currentSource, onUpdateSource }) => {
-  const list = [1, 2, 3];
-
   return (
     <Container>
-      {list.map((item) => (
+      {playList.map((item) => (
         <PlayListItem
           type="button"
-          key={item}
-          active={item === currentSource}
-          onClick={() => onUpdateSource(item)}
+          key={item.id}
+          active={item.id === currentSource}
+          onClick={() => onUpdateSource(item.id)}
         >
-          video {item}
+          {item.name}
         </PlayListItem>
       ))}
     </Container>
@@ -23,7 +22,7 @@ const PlayList = ({ currentSource, onUpdateSource }) => {
 };
 
 const Container = styled.div`
-  width: ${dimensions.videoWidth};
+  width: ${dimensions.videoWidth}px;
   margin-left: ${baseMargin};
   margin-top: ${baseMargin};
   border: ${baseBorder};
@@ -32,12 +31,10 @@ const Container = styled.div`
 `;
 
 const PlayListItem = styled.button`
-  font-weight: bold;
   font-size: 1rem;
   margin: 9px;
   border: ${baseBorder};
-  height: ${dimensions.buttonHeight};
-  width: 75px;
+  height: ${dimensions.buttonHeight}px;
   border-radius: 4px;
   background-color: ${(props) =>
     props.active ? colors.activeItem : colors.background};
