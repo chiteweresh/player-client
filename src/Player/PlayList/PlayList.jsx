@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { baseBorder, baseMargin, colors, dimensions } from '../../style/theme';
-import { playList } from '../../utils/playList';
+import { PLAYLIST } from '../../utils/constants';
 
 const PlayList = ({ currentSource, onUpdateSource }) => {
   return (
     <Container>
-      {playList.map((item) => (
+      {PLAYLIST.map((item) => (
         <PlayListItem
           type="button"
           key={item.id}

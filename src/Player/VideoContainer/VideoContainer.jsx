@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import dashjs from 'dashjs';
 import { baseBorder, baseMargin, dimensions } from '../../style/theme';
-import { playList } from '../../utils/playList';
+import { PLAYLIST } from '../../utils/constants';
 
 const VideoContainer = ({
   playing,
@@ -17,13 +17,15 @@ const VideoContainer = ({
   subtitle,
 }) => {
   const videoRef = useRef(null);
-  const mediaPlayer = dashjs.MediaPlayer().create();
   const index = currentSource - 1;
 
   useEffect(() => {
-    mediaPlayer.initialize(videoRef.current, playList[index].url, false);
+    const mediaPlayer = dashjs.MediaPlayer().create();
+    mediaPlayer.initialize(videoRef.current, PLAYLIST[index].url, false);
     return () => {
-      mediaPlayer.reset();
+      if (mediaPlayer.isReady()) {
+        mediaPlayer.destroy();
+      }
     };
   }, [currentSource]);
 
@@ -59,14 +61,14 @@ const VideoContainer = ({
   return (
     <Container>
       <video
+        data-testid="dash-video"
         onLoadedMetadata={onDurationLoaded}
         onTimeUpdate={onTimeUpdate}
         onEnded={onPlayPause}
         muted={muted}
         ref={videoRef}
-        className="dashVideo"
-        poster={playList[index].poster}
-        controls
+        className="dash-video"
+        poster={PLAYLIST[index].poster}
       />
     </Container>
   );
@@ -78,7 +80,7 @@ const Container = styled.div`
   margin-left: ${baseMargin};
   margin-top: 50px;
   border: ${baseBorder};
-  .dashVideo {
+  .dash-video {
     position: relative;
     left: 50%;
     top: 50%;
