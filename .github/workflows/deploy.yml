@@ -8,7 +8,7 @@ on:
     types: [ closed, assigned, opened, reopened ]
 
 jobs:
-  CI/CD:
+  CI-CD:
     runs-on: ubuntu-latest
 
     steps:
