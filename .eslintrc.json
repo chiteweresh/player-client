@@ -11,20 +11,10 @@
   "overrides": [
     {
       "files": [
-        "**/*.test.js"
+        "**/*.test.jsx"
       ],
       "env": {
         "jest": true
-      },
-      "rules": {
-        "react/jsx-filename-extension": [
-          1,
-          {
-            "extensions": [
-              ".js"
-            ]
-          }
-        ]
       }
     }
   ],

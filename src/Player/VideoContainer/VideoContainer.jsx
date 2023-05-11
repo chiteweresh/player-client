@@ -1,7 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import dashjs from 'dashjs';
 import { baseBorder, baseMargin, dimensions } from '../../style/theme';
+import { PLAYLIST } from '../../utils/constants';
 
 const VideoContainer = ({
   playing,
@@ -15,6 +17,17 @@ const VideoContainer = ({
   subtitle,
 }) => {
   const videoRef = useRef(null);
+  const index = currentSource - 1;
+
+  useEffect(() => {
+    const mediaPlayer = dashjs.MediaPlayer().create();
+    mediaPlayer.initialize(videoRef.current, PLAYLIST[index].url, false);
+    return () => {
+      if (mediaPlayer.isReady()) {
+        mediaPlayer.destroy();
+      }
+    };
+  }, [currentSource]);
 
   useEffect(() => {
     playing ? videoRef.current.play() : videoRef.current.pause();
@@ -29,9 +42,10 @@ const VideoContainer = ({
   }, [clickFrames]);
 
   useEffect(() => {
-    if (subtitle) {
-      videoRef.current.textTracks[0].mode = 'showing';
-    } else videoRef.current.textTracks[0].mode = 'hidden';
+    const textTrack = videoRef.current.textTracks[0];
+    if (textTrack) {
+      textTrack.mode = subtitle ? 'showing' : 'hidden';
+    }
   }, [subtitle]);
 
   const onTimeUpdate = () => {
@@ -47,40 +61,32 @@ const VideoContainer = ({
   return (
     <Container>
       <video
+        data-testid="dash-video"
         onLoadedMetadata={onDurationLoaded}
         onTimeUpdate={onTimeUpdate}
         onEnded={onPlayPause}
         muted={muted}
         ref={videoRef}
-        className="video"
-        src={`/video/${currentSource}.mp4`}
-        poster="/video/cover.jpg"
-      >
-        <track
-          default
-          kind="subtitles"
-          src={`/${currentSource}.vtt`}
-          srcLang="en"
-          label="from vtt file"
-        />
-      </video>
+        className="dash-video"
+        poster={PLAYLIST[index].poster}
+      />
     </Container>
   );
 };
 
 const Container = styled.div`
-  width: ${dimensions.videoWidth};
-  height: ${dimensions.videoHeight};
+  width: ${dimensions.videoWidth}px;
+  height: ${dimensions.videoHeight}px;
   margin-left: ${baseMargin};
   margin-top: 50px;
   border: ${baseBorder};
-  .video {
+  .dash-video {
     position: relative;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    max-width: ${dimensions.videoWidth};
-    max-height: ${dimensions.videoHeight};
+    max-width: ${dimensions.videoWidth}px;
+    max-height: ${dimensions.videoHeight}px;
   }
 `;
 

@@ -5,7 +5,7 @@ const ControlBtn = styled.button`
   float: left;
   background-color: transparent;
   border: none;
-  height: ${dimensions.buttonHeight};
+  height: ${dimensions.buttonHeight}px;
   padding: 0 0 0 1px;
   box-sizing: content-box;
   cursor: pointer;

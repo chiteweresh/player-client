@@ -14,6 +14,7 @@ const Player = () => {
     clickFrames: null,
     subtitle: true,
   });
+
   const {
     playing,
     muted,

@@ -8,16 +8,16 @@ export const colors = {
 };
 
 export const dimensions = {
-  videoWidth: '640px',
-  videoHeight: '360px',
-  controlPanelHeight: '43px',
-  buttonHeight: '36px',
-  volumeBarHeight: '5px',
-  fullVolumeWidth: '100px',
-  defaultVolumeWidth: '50px',
-  sliderSize: '15px',
-  progressHeight: '5px',
-  progressWidth: '640px',
+  videoWidth: 640,
+  videoHeight: 360,
+  controlPanelHeight: 43,
+  buttonHeight: 36,
+  volumeBarHeight: 5,
+  fullVolumeWidth: 100,
+  defaultVolumeWidth: 50,
+  sliderSize: 15,
+  progressHeight: 5,
+  progressWidth: 640,
 };
 
 export const baseMargin = '1rem';

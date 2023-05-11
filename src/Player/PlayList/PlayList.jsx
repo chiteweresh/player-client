@@ -2,30 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { baseBorder, baseMargin, colors, dimensions } from '../../style/theme';
+import { PLAYLIST } from '../../utils/constants';
 
 const PlayList = ({ currentSource, onUpdateSource }) => {
-  const list = [1, 2, 3];
-
   return (
-    <div className="playlist">
-      <Container>
-        {list.map((item) => (
-          <PlayListItem
-            type="button"
-            key={item}
-            active={item === currentSource}
-            onClick={() => onUpdateSource(item)}
-          >
-            video {item}
-          </PlayListItem>
-        ))}
-      </Container>
-    </div>
+    <Container>
+      {PLAYLIST.map((item) => (
+        <PlayListItem
+          type="button"
+          key={item.id}
+          active={item.id === currentSource}
+          onClick={() => onUpdateSource(item.id)}
+        >
+          {item.name}
+        </PlayListItem>
+      ))}
+    </Container>
   );
 };
 
 const Container = styled.div`
-  width: ${dimensions.videoWidth};
+  width: ${dimensions.videoWidth}px;
   margin-left: ${baseMargin};
   margin-top: ${baseMargin};
   border: ${baseBorder};
@@ -34,12 +31,10 @@ const Container = styled.div`
 `;
 
 const PlayListItem = styled.button`
-  font-weight: bold;
   font-size: 1rem;
   margin: 9px;
   border: ${baseBorder};
-  height: ${dimensions.buttonHeight};
-  width: 75px;
+  height: ${dimensions.buttonHeight}px;
   border-radius: 4px;
   background-color: ${(props) =>
     props.active ? colors.activeItem : colors.background};

@@ -41,11 +41,11 @@ const ControlPanel = ({
 );
 
 const Container = styled.div`
-  width: ${dimensions.videoWidth};
+  width: ${dimensions.videoWidth}px;
   margin-left: ${baseMargin};
   position: relative;
   border: ${baseBorder};
-  height: ${dimensions.controlPanelHeight};
+  height: ${dimensions.controlPanelHeight}px;
 `;
 
 ControlPanel.propTypes = {
