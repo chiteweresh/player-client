@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { baseBorder, baseMargin, dimensions } from '../../style/theme';
+import { baseBorder, dimensions } from '../../style/theme';
 import ControlsBar from './ControlBar/ControlBar';
 import ProgressBar from './ProgressBar';
 
@@ -42,7 +42,7 @@ const ControlPanel = ({
 
 const Container = styled.div`
   width: ${dimensions.videoWidth}px;
-  margin-left: ${baseMargin};
+  margin: auto;
   position: relative;
   border: ${baseBorder};
   height: ${dimensions.controlPanelHeight}px;

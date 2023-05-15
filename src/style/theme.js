@@ -4,7 +4,8 @@ export const colors = {
   background: '#D3D3D3FF',
   currentProgress: '#DC143CFF',
   currentVolume: 'cornflowerblue',
-  activeItem: '#fcd82b',
+  activeItem: '#eee6e6',
+  regularItem: '#fff2d6',
 };
 
 export const dimensions = {
@@ -18,6 +19,7 @@ export const dimensions = {
   sliderSize: 15,
   progressHeight: 5,
   progressWidth: 640,
+  posterDimension: 100,
 };
 
 export const baseMargin = '1rem';

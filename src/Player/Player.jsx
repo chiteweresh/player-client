@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 import PlayList from './PlayList/PlayList';
 import VideoContainer from './VideoContainer/VideoContainer';
 import ControlPanel from './ControlPanel/ControlPanel';
@@ -80,7 +81,7 @@ const Player = () => {
   };
 
   return (
-    <div className="player">
+    <Wrapper>
       <VideoContainer
         playing={playing}
         onPlayPause={playPauseHandler}
@@ -106,8 +107,12 @@ const Player = () => {
         subtitle={subtitle}
       />
       <PlayList currentSource={currentSource} onUpdateSource={sourceHandler} />
-    </div>
+    </Wrapper>
   );
 };
+
+const Wrapper = styled.div`
+  min-height: 800px;
+`;
 
 export default Player;

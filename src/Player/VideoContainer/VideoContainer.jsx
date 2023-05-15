@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import dashjs from 'dashjs';
-import { baseBorder, baseMargin, dimensions } from '../../style/theme';
+import { baseBorder, dimensions } from '../../style/theme';
 import { PLAYLIST } from '../../utils/constants';
 
 const VideoContainer = ({
@@ -77,9 +77,9 @@ const VideoContainer = ({
 const Container = styled.div`
   width: ${dimensions.videoWidth}px;
   height: ${dimensions.videoHeight}px;
-  margin-left: ${baseMargin};
-  margin-top: 50px;
+  margin: 50px auto 0;
   border: ${baseBorder};
+  background-color: white;
   .dash-video {
     position: relative;
     left: 50%;
