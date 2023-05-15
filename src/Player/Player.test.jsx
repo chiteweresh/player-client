@@ -9,6 +9,6 @@ describe('Player', () => {
     render(<Player />);
     // Act
     // Assert
-    expect(screen.getByText(PLAYLIST[1].name)).toBeInTheDocument();
+    expect(screen.getByText(PLAYLIST[1].title)).toBeInTheDocument();
   });
 });
