@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { SpeakerMuteBtn } from './components/ControlButton';
+import { SpeakerMuteBtn } from '../ControlButton';
 import VolumeSlider from './components/VolumeSlider';
 
 const VolumeControlBar = ({ onMute, muted, volume, onUpdateVolume }) => (

@@ -5,7 +5,7 @@ import {
   PlayPauseBtn,
   RewindBtn,
 } from './components/ControlButton';
-import VolumeControlBar from './VolumeControlBar';
+import VolumeControlBar from './components/VolumeControlBar/VolumeControlBar';
 import TimeDisplay from './components/TimeDisplay';
 import SubtitleToggle from './components/SubtitleToggle';
 
