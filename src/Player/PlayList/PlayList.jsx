@@ -1,22 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { baseMargin, colors, dimensions } from '../../style/theme';
-import { PLAYLIST } from '../../utils/constants';
+import { getDisplayTime } from '../../utils/utils';
 
 const PlayList = ({ currentSource, onUpdateSource }) => {
+  const [playlist, setPlaylist] = useState(null);
+  useEffect(() => {
+    fetch('/api/playlist.json')
+      .then((res) => res.json())
+      .then((data) => {
+        setPlaylist(data);
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error('Error :', error);
+      });
+  }, []);
+
+  if (!playlist) {
+    return <div />;
+  }
+
   return (
     <Container>
-      {PLAYLIST.map((item) => (
+      {playlist.map((item) => (
         <PlayListItem
           key={item.id}
           active={item.id === currentSource}
           onClick={() => onUpdateSource(item.id)}
+          // TODO: change id into asset ID when video source can be get from request
         >
           <VideoPoster src={item.poster} alt="poster" />
           <VideoDetail>
             <div className="video-title">{item.title}</div>
-            <div className="video-description">{item.description}</div>
+            <div className="video-description">{item.synopsis}</div>
+            <div className="video-description">
+              duration: {getDisplayTime(item.duration)}
+            </div>
           </VideoDetail>
         </PlayListItem>
       ))}

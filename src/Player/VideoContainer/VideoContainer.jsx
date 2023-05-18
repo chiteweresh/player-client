@@ -17,11 +17,13 @@ const VideoContainer = ({
   subtitle,
 }) => {
   const videoRef = useRef(null);
-  const index = currentSource - 1;
 
   useEffect(() => {
     const mediaPlayer = dashjs.MediaPlayer().create();
-    mediaPlayer.initialize(videoRef.current, PLAYLIST[index].url, false);
+    mediaPlayer.initialize();
+    mediaPlayer.attachView(videoRef.current);
+    mediaPlayer.setAutoPlay(false);
+    mediaPlayer.attachSource(PLAYLIST[currentSource - 1].url);
     return () => {
       if (mediaPlayer.isReady()) {
         mediaPlayer.destroy();
@@ -68,18 +70,21 @@ const VideoContainer = ({
         muted={muted}
         ref={videoRef}
         className="dash-video"
-        poster={PLAYLIST[index].poster}
+        poster={PLAYLIST[currentSource - 1].poster}
+        controls
       />
     </Container>
   );
 };
 
 const Container = styled.div`
+  position: relative;
   width: ${dimensions.videoWidth}px;
   height: ${dimensions.videoHeight}px;
   margin: 50px auto 0;
   border: ${baseBorder};
   background-color: white;
+
   .dash-video {
     position: relative;
     left: 50%;
