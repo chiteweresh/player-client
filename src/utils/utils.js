@@ -16,3 +16,14 @@ export const getShift = (e, ref) => {
   const panelPosition = Math.floor(ref.current.getBoundingClientRect().left);
   return clickPosition - panelPosition;
 };
+
+export const fetchVideoData = (currentSource) => {
+  return fetch(`/api/play/${currentSource}.json`)
+    .then((res) => res.json())
+    .then((data) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error('请求视频数据时出现错误:', error);
+    });
+};

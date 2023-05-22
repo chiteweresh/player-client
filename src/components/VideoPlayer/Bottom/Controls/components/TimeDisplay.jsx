@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { dimensions } from '../../../../style/theme';
-import { getDisplayTime } from '../../../../utils/utils';
+import { dimensions } from '../../../../../style/theme';
+import { getDisplayTime } from '../../../../../utils/utils';
 
 const TimeDisplay = ({ currentTime, duration }) => {
   return (

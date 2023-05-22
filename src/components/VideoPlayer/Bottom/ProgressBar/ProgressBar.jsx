@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { colors, dimensions } from '../../style/theme';
-import { getShift } from '../../utils/utils';
+import { colors, dimensions } from '../../../../style/theme';
+import { getShift } from '../../../../utils/utils';
 
 const ProgressBar = ({ currentTime, duration, onUpdateProgress }) => {
   const progressRef = useRef(null);

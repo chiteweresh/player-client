@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  ForwardBtn,
-  PlayPauseBtn,
-  RewindBtn,
+  ForwardButton,
+  PlayPauseButton,
+  RewindButton,
+  SubtitleToggle,
 } from './components/ControlButton';
-import VolumeControlBar from './components/VolumeControlBar/VolumeControlBar';
+import VolumePanel from './components/VolumePanel/VolumePanel';
 import TimeDisplay from './components/TimeDisplay';
-import SubtitleToggle from './components/SubtitleToggle';
 
-const ControlsBar = ({
+const Controls = ({
   onPlayPause,
   playing,
   onMute,
@@ -17,31 +17,34 @@ const ControlsBar = ({
   onUpdateVolume,
   volume,
   currentTime,
-  duration,
-  subtitleSwitch,
-  subtitle,
   onUpdateProgress,
+  duration,
+  onSwitchSubtitle,
+  subtitle,
 }) => (
   <>
-    <RewindBtn currentTime={currentTime} onUpdateProgress={onUpdateProgress} />
-    <PlayPauseBtn onPlayPause={onPlayPause} playing={playing} />
-    <ForwardBtn
+    <RewindButton
+      currentTime={currentTime}
+      onUpdateProgress={onUpdateProgress}
+    />
+    <PlayPauseButton onPlayPause={onPlayPause} playing={playing} />
+    <ForwardButton
       currentTime={currentTime}
       onUpdateProgress={onUpdateProgress}
       duration={duration}
     />
+    <SubtitleToggle subtitle={subtitle} onSwitchSubtitle={onSwitchSubtitle} />
     <TimeDisplay currentTime={currentTime} duration={duration} />
-    <VolumeControlBar
+    <VolumePanel
       onMute={onMute}
       muted={muted}
       onUpdateVolume={onUpdateVolume}
       volume={volume}
     />
-    <SubtitleToggle subtitle={subtitle} subtitleSwitch={subtitleSwitch} />
   </>
 );
 
-ControlsBar.propTypes = {
+Controls.propTypes = {
   onPlayPause: PropTypes.func.isRequired,
   playing: PropTypes.bool,
   muted: PropTypes.bool,
@@ -50,8 +53,8 @@ ControlsBar.propTypes = {
   volume: PropTypes.number,
   currentTime: PropTypes.number,
   duration: PropTypes.number,
-  subtitleSwitch: PropTypes.func.isRequired,
+  onSwitchSubtitle: PropTypes.func.isRequired,
   subtitle: PropTypes.bool,
   onUpdateProgress: PropTypes.func.isRequired,
 };
-export default ControlsBar;
+export default Controls;
