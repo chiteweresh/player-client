@@ -5,28 +5,25 @@ import { baseMargin, colors, dimensions } from '../../style/theme';
 import { getDisplayTime } from '../../utils/utils';
 
 const PlayList = ({ currentAsset, onUpdateAsset, playlist }) => {
-  if (!playlist) {
-    return <div />;
-  }
-
   return (
     <Container>
-      {playlist.map((item) => (
-        <PlayListItem
-          key={item.assetId}
-          active={item.assetId === currentAsset}
-          onClick={() => onUpdateAsset(item.assetId)}
-        >
-          <VideoPoster src={item.poster} alt="poster" />
-          <VideoDetail>
-            <div className="video-title">{item.title}</div>
-            <div className="video-description">{item.synopsis}</div>
-            <div className="video-description">
-              duration: {getDisplayTime(item.duration)}
-            </div>
-          </VideoDetail>
-        </PlayListItem>
-      ))}
+      {playlist &&
+        playlist.map((item) => (
+          <PlayListItem
+            key={item.assetId}
+            active={item.assetId === currentAsset}
+            onClick={() => onUpdateAsset(item.assetId)}
+          >
+            <VideoPoster src={item.poster} alt="poster" />
+            <VideoDetail>
+              <div className="video-title">{item.title}</div>
+              <div className="video-description">{item.synopsis}</div>
+              <div className="video-description">
+                duration: {getDisplayTime(item.duration)}
+              </div>
+            </VideoDetail>
+          </PlayListItem>
+        ))}
     </Container>
   );
 };

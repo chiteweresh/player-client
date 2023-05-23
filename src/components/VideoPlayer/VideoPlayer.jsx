@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import dashjs from 'dashjs';
-import { baseBorder, dimensions } from '../../style/theme';
+import { baseBorder, colors, dimensions } from '../../style/theme';
 import Bottom from './Bottom/Bottom';
+import useAd from '../../hooks/useAd';
 
 const VideoPlayer = ({ videoData }) => {
   const videoRef = useRef();
@@ -11,17 +12,24 @@ const VideoPlayer = ({ videoData }) => {
   const [muted, setMuted] = useState(false);
   const [volume, setVolume] = useState(0.5);
   const [currentTime, setCurrentTime] = useState(0);
-  const [clickFrames, setClickFrames] = useState(0);
+  const [videoTime, setVideoTime] = useState(0);
+  const [seekFrame, setSeekFrame] = useState(0);
   const [subtitle, setSubtitle] = useState(true);
 
-  const { videoPoster, videoUrl, videoDuration } = videoData;
+  const { videoPoster, videoUrl, videoDuration, adUrl } = videoData;
+  const { adDuration, inAd, modifiedTime, seekTime } = useAd(
+    adUrl,
+    videoTime,
+    seekFrame
+  );
   const mediaPlayer = dashjs.MediaPlayer().create();
 
   useEffect(() => {
     mediaPlayer.initialize(videoRef.current, videoUrl, false);
-    mediaPlayer.on(dashjs.MediaPlayer.events.BASE_URLS_UPDATED, () =>
-      setPlaying(false)
-    );
+    mediaPlayer.on(dashjs.MediaPlayer.events.BASE_URLS_UPDATED, () => {
+      setPlaying(false);
+      setCurrentTime(0);
+    });
     return () => {
       mediaPlayer.isReady() ? mediaPlayer.destroy() : null;
     };
@@ -37,8 +45,8 @@ const VideoPlayer = ({ videoData }) => {
   }, [volume]);
 
   useEffect(() => {
-    videoRef.current.currentTime = clickFrames;
-  }, [clickFrames]);
+    videoRef.current.currentTime = seekTime;
+  }, [seekFrame]);
 
   useEffect(() => {
     const textTrack = videoRef.current.textTracks[0];
@@ -48,14 +56,15 @@ const VideoPlayer = ({ videoData }) => {
   }, [subtitle]);
 
   const onTimeUpdate = () => {
-    setCurrentTime(videoRef.current.currentTime);
-  };
-  const onUpdateProgress = (time) => {
-    setClickFrames(time);
+    setVideoTime(videoRef.current.currentTime);
+    setCurrentTime(modifiedTime);
   };
   const onPlayPause = () => setPlaying(!playing);
   const onSwitchSubtitle = () => {
     setSubtitle(!subtitle);
+  };
+  const onSeek = (frameTime) => {
+    setSeekFrame(frameTime);
   };
   const onUpdateVolume = (v) => {
     setVolume(v);
@@ -79,9 +88,10 @@ const VideoPlayer = ({ videoData }) => {
           poster={videoPoster}
           controls
         />
+        {inAd && <AdContainer>这是⚠️广告</AdContainer>}
       </VideoContainer>
       <Bottom
-        duration={videoDuration}
+        duration={inAd ? adDuration : videoDuration}
         playing={playing}
         onPlayPause={onPlayPause}
         volume={volume}
@@ -89,9 +99,10 @@ const VideoPlayer = ({ videoData }) => {
         muted={muted}
         onMute={onMute}
         currentTime={currentTime}
-        onUpdateProgress={onUpdateProgress}
+        onSeek={onSeek}
         subtitle={subtitle}
         onSwitchSubtitle={onSwitchSubtitle}
+        ad={inAd}
       />
     </>
   );
@@ -115,11 +126,23 @@ const VideoContainer = styled.div`
   }
 `;
 
+const AdContainer = styled.div`
+  color: red;
+  font-size: 4rem;
+  background-color: ${colors.activeItem};
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 1;
+`;
+
 VideoPlayer.propTypes = {
   videoData: PropTypes.shape({
     videoPoster: PropTypes.string,
     videoUrl: PropTypes.string,
     videoDuration: PropTypes.number,
+    adUrl: PropTypes.string,
   }),
 };
 export default VideoPlayer;

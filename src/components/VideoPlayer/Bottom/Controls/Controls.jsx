@@ -17,32 +17,39 @@ const Controls = ({
   onUpdateVolume,
   volume,
   currentTime,
-  onUpdateProgress,
+  onSeek,
   duration,
   onSwitchSubtitle,
   subtitle,
-}) => (
-  <>
-    <RewindButton
-      currentTime={currentTime}
-      onUpdateProgress={onUpdateProgress}
-    />
-    <PlayPauseButton onPlayPause={onPlayPause} playing={playing} />
-    <ForwardButton
-      currentTime={currentTime}
-      onUpdateProgress={onUpdateProgress}
-      duration={duration}
-    />
-    <SubtitleToggle subtitle={subtitle} onSwitchSubtitle={onSwitchSubtitle} />
-    <TimeDisplay currentTime={currentTime} duration={duration} />
-    <VolumePanel
-      onMute={onMute}
-      muted={muted}
-      onUpdateVolume={onUpdateVolume}
-      volume={volume}
-    />
-  </>
-);
+  ad,
+}) => {
+  return (
+    <>
+      {!ad && <RewindButton currentTime={currentTime} onSeek={onSeek} />}
+      <PlayPauseButton onPlayPause={onPlayPause} playing={playing} />
+      {!ad && (
+        <ForwardButton
+          currentTime={currentTime}
+          onSeek={onSeek}
+          duration={duration}
+        />
+      )}
+      {!ad && (
+        <SubtitleToggle
+          subtitle={subtitle}
+          onSwitchSubtitle={onSwitchSubtitle}
+        />
+      )}
+      <TimeDisplay currentTime={currentTime} duration={duration} />
+      <VolumePanel
+        onMute={onMute}
+        muted={muted}
+        onUpdateVolume={onUpdateVolume}
+        volume={volume}
+      />
+    </>
+  );
+};
 
 Controls.propTypes = {
   onPlayPause: PropTypes.func.isRequired,
@@ -55,6 +62,7 @@ Controls.propTypes = {
   duration: PropTypes.number,
   onSwitchSubtitle: PropTypes.func.isRequired,
   subtitle: PropTypes.bool,
-  onUpdateProgress: PropTypes.func.isRequired,
+  onSeek: PropTypes.func.isRequired,
+  ad: PropTypes.bool,
 };
 export default Controls;

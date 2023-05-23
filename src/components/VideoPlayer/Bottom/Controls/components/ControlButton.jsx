@@ -28,11 +28,11 @@ export const PlayPauseButton = ({ onPlayPause, playing }) => {
   );
 };
 
-export const ForwardButton = ({ currentTime, onUpdateProgress, duration }) => {
+export const ForwardButton = ({ currentTime, onSeek, duration }) => {
   const onClick = () => {
     if (currentTime <= duration - 5) {
-      onUpdateProgress(currentTime + 5);
-    } else onUpdateProgress(duration);
+      onSeek(currentTime + 5);
+    } else onSeek(duration);
   };
   return (
     <ControlButton type="button" onClick={onClick}>
@@ -41,11 +41,11 @@ export const ForwardButton = ({ currentTime, onUpdateProgress, duration }) => {
   );
 };
 
-export const RewindButton = ({ currentTime, onUpdateProgress }) => {
+export const RewindButton = ({ currentTime, onSeek }) => {
   const onClick = () => {
     if (currentTime >= 5) {
-      onUpdateProgress(currentTime - 5);
-    } else onUpdateProgress(0);
+      onSeek(currentTime - 5);
+    } else onSeek(0);
   };
   return (
     <ControlButton type="button" onClick={onClick}>
@@ -73,13 +73,13 @@ PlayPauseButton.propTypes = {
 
 ForwardButton.propTypes = {
   currentTime: PropTypes.number,
-  onUpdateProgress: PropTypes.func.isRequired,
+  onSeek: PropTypes.func.isRequired,
   duration: PropTypes.number,
 };
 
 RewindButton.propTypes = {
   currentTime: PropTypes.number,
-  onUpdateProgress: PropTypes.func.isRequired,
+  onSeek: PropTypes.func.isRequired,
 };
 
 SpeakerMuteButton.propTypes = {

@@ -13,19 +13,22 @@ const Bottom = ({
   onUpdateVolume,
   volume,
   duration,
-  onUpdateProgress,
+  onSeek,
   currentTime,
   onSwitchSubtitle,
   subtitle,
+  ad,
 }) => {
   return (
     <Container>
       <ProgressBar
         duration={duration}
-        onUpdateProgress={onUpdateProgress}
+        onSeek={onSeek}
         currentTime={currentTime}
+        ad={ad}
       />
       <Controls
+        ad={ad}
         onPlayPause={onPlayPause}
         playing={playing}
         onMute={onMute}
@@ -36,7 +39,7 @@ const Bottom = ({
         duration={duration}
         onSwitchSubtitle={onSwitchSubtitle}
         subtitle={subtitle}
-        onUpdateProgress={onUpdateProgress}
+        onSeek={onSeek}
       />
     </Container>
   );
@@ -56,11 +59,12 @@ Bottom.propTypes = {
   onPlayPause: PropTypes.func.isRequired,
   muted: PropTypes.bool,
   onMute: PropTypes.func.isRequired,
-  onUpdateProgress: PropTypes.func.isRequired,
+  onSeek: PropTypes.func.isRequired,
   playing: PropTypes.bool,
   onUpdateVolume: PropTypes.func.isRequired,
   volume: PropTypes.number,
   onSwitchSubtitle: PropTypes.func.isRequired,
   subtitle: PropTypes.bool,
+  ad: PropTypes.bool,
 };
 export default Bottom;

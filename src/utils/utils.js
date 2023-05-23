@@ -1,4 +1,7 @@
 export const getDisplayTime = (time) => {
+  if (!time || time <= 0) {
+    return '00:00:00';
+  }
   const hour = Math.floor(time / 3600)
     .toString()
     .padStart(2, '0');
@@ -26,4 +29,19 @@ export const fetchVideoData = (currentSource) => {
     .catch((error) => {
       console.error('请求视频数据时出现错误:', error);
     });
+};
+
+export const getModifiedTime = (videoTime, adStartTime, adDuration, inAd) => {
+  const beforeAd = videoTime < adStartTime;
+  // eslint-disable-next-line no-nested-ternary
+  return inAd
+    ? videoTime - adStartTime
+    : beforeAd
+    ? videoTime
+    : videoTime - adDuration;
+};
+
+export const getSeekTime = (adStartTime, seekFrame, adDuration) => {
+  const afterAd = seekFrame > adStartTime;
+  return afterAd ? seekFrame + adDuration : seekFrame;
 };

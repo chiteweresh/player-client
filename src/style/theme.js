@@ -2,8 +2,9 @@ export const colors = {
   white: '#fff',
   black: '#000',
   background: '#D3D3D3FF',
-  currentProgress: '#DC143CFF',
-  currentVolume: 'cornflowerblue',
+  videoProgress: '#DC143CFF',
+  adProgress: '#14bedc',
+  currentVolume: '#14bedc',
   activeItem: '#eee6e6',
   regularItem: '#fff2d6',
 };
