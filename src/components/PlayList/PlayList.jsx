@@ -2,24 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { baseMargin, colors, dimensions } from '../../style/theme';
-import { PLAYLIST } from '../../utils/constants';
+import { getDisplayTime } from '../../utils/utils';
 
-const PlayList = ({ currentSource, onUpdateSource }) => {
+const PlayList = ({ currentAsset, onUpdateAsset, playlist }) => {
   return (
     <Container>
-      {PLAYLIST.map((item) => (
-        <PlayListItem
-          key={item.id}
-          active={item.id === currentSource}
-          onClick={() => onUpdateSource(item.id)}
-        >
-          <VideoPoster src={item.poster} alt="poster" />
-          <VideoDetail>
-            <div className="video-title">{item.title}</div>
-            <div className="video-description">{item.description}</div>
-          </VideoDetail>
-        </PlayListItem>
-      ))}
+      {playlist &&
+        playlist.map((item) => (
+          <PlayListItem
+            key={item.assetId}
+            active={item.assetId === currentAsset}
+            onClick={() => onUpdateAsset(item.assetId)}
+          >
+            <VideoPoster src={item.poster} alt="poster" />
+            <VideoDetail>
+              <div className="video-title">{item.title}</div>
+              <div className="video-description">{item.synopsis}</div>
+              <div className="video-description">
+                duration: {getDisplayTime(item.duration)}
+              </div>
+            </VideoDetail>
+          </PlayListItem>
+        ))}
     </Container>
   );
 };
@@ -65,7 +69,14 @@ const VideoDetail = styled.div`
 `;
 
 PlayList.propTypes = {
-  currentSource: PropTypes.number,
-  onUpdateSource: PropTypes.func.isRequired,
+  currentAsset: PropTypes.string,
+  onUpdateAsset: PropTypes.func.isRequired,
+  playlist: PropTypes.arrayOf(
+    PropTypes.shape({
+      assetId: PropTypes.string,
+      title: PropTypes.string,
+      synopsis: PropTypes.string,
+    })
+  ),
 };
 export default PlayList;

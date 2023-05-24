@@ -1,28 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { SpeakerMuteBtn } from './components/ControlButton';
-import VolumeSlider from './components/VolumeSlider';
+import { SpeakerMuteButton } from '../ControlButton';
+import VolumeSlider from './VolumeSlider';
 
-const VolumeControlBar = ({ onMute, muted, volume, onUpdateVolume }) => (
-  <Container>
-    <SpeakerMuteBtn onMute={onMute} muted={muted} volume={volume} />
+const VolumePanel = ({ onMute, muted, volume, onUpdateVolume }) => (
+  <VolumeContainer>
+    <SpeakerMuteButton onMute={onMute} muted={muted} volume={volume} />
     <VolumeSlider currentVolume={volume} onUpdateVolume={onUpdateVolume} />
-  </Container>
+  </VolumeContainer>
 );
 
-const Container = styled.div`
+const VolumeContainer = styled.div`
   align-items: center;
   display: flex;
   position: absolute;
   right: 0;
 `;
 
-VolumeControlBar.propTypes = {
+VolumePanel.propTypes = {
   onMute: PropTypes.func.isRequired,
   muted: PropTypes.bool,
   volume: PropTypes.number,
   onUpdateVolume: PropTypes.func.isRequired,
 };
 
-export default VolumeControlBar;
+export default VolumePanel;
