@@ -17,7 +17,7 @@ const VideoPlayer = ({ videoData }) => {
   const [subtitle, setSubtitle] = useState(true);
 
   const { videoPoster, videoUrl, videoDuration, adUrl } = videoData;
-  const { adDuration, inAd, modifiedTime, seekTime } = useAd(
+  const { adInfo, inAd, modifiedTime, seekTime } = useAd(
     adUrl,
     videoTime,
     seekFrame
@@ -91,14 +91,14 @@ const VideoPlayer = ({ videoData }) => {
         {inAd && <AdContainer>这是⚠️广告</AdContainer>}
       </VideoContainer>
       <Bottom
-        duration={inAd ? adDuration : videoDuration}
+        duration={inAd ? adInfo.adDuration : videoDuration}
         playing={playing}
         onPlayPause={onPlayPause}
         volume={volume}
         onUpdateVolume={onUpdateVolume}
         muted={muted}
         onMute={onMute}
-        currentTime={currentTime}
+        currentTime={inAd ? adInfo.adProgress : currentTime}
         onSeek={onSeek}
         subtitle={subtitle}
         onSwitchSubtitle={onSwitchSubtitle}

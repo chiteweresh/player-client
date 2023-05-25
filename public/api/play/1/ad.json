@@ -2,5 +2,9 @@
   {
     "startTime": 0,
     "duration": 15
+  },
+  {
+    "startTime": 60,
+    "duration": 15
   }
 ]

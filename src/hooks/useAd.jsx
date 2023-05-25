@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
-import { getModifiedTime, getSeekTime } from '../utils/utils';
+import {
+  checkInAd,
+  getAdInfo,
+  getAdjustVideoTime,
+  getSeekTime,
+} from '../utils/utils';
 
 const useAd = (adUrl, videoTime, seekFrame) => {
-  const [adDuration, setAdDuration] = useState(15);
-  const [adStartTime, setAdStartTime] = useState(0);
+  const [adData, setAdData] = useState(null);
   const [inAd, setInAd] = useState(false);
-
-  const adEndTime = adStartTime + adDuration;
 
   useEffect(() => {
     adUrl &&
       fetch(adUrl)
         .then((res) => res.json())
         .then((data) => {
-          setAdDuration(data[0].duration);
-          setAdStartTime(data[0].startTime);
+          setAdData(data);
         })
         .catch((error) => {
           console.error('请求广告数据时出现错误:', error);
@@ -22,17 +23,18 @@ const useAd = (adUrl, videoTime, seekFrame) => {
   }, [adUrl]);
 
   useEffect(() => {
-    setInAd(videoTime > adStartTime && videoTime < adEndTime);
-  }, [videoTime]);
+    adData && setInAd(checkInAd(adData, videoTime));
+  }, [videoTime, adData]);
 
-  const modifiedTime = getModifiedTime(
-    videoTime,
-    adStartTime,
-    adDuration,
-    inAd
-  );
-  const seekTime = getSeekTime(adStartTime, seekFrame, adDuration);
+  const adInfo = inAd ? getAdInfo(adData, videoTime) : null;
+  const modifiedTime = !inAd ? getAdjustVideoTime(adData, videoTime) : null;
+  const seekTime = getSeekTime(adData, seekFrame) || 0;
 
-  return { adDuration, inAd, modifiedTime, seekTime };
+  return {
+    adInfo,
+    inAd,
+    modifiedTime,
+    seekTime,
+  };
 };
 export default useAd;

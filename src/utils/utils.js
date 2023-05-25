@@ -31,17 +31,38 @@ export const fetchVideoData = (currentSource) => {
     });
 };
 
-export const getModifiedTime = (videoTime, adStartTime, adDuration, inAd) => {
-  const beforeAd = videoTime < adStartTime;
-  // eslint-disable-next-line no-nested-ternary
-  return inAd
-    ? videoTime - adStartTime
-    : beforeAd
-    ? videoTime
-    : videoTime - adDuration;
+export const checkInAd = (adData, time) => {
+  return adData.some(
+    (ad) => time > ad.startTime && time <= ad.startTime + ad.duration
+  );
 };
 
-export const getSeekTime = (adStartTime, seekFrame, adDuration) => {
-  const afterAd = seekFrame > adStartTime;
-  return afterAd ? seekFrame + adDuration : seekFrame;
+export const getAdInfo = (adData, videoTime) => {
+  const currentAd = adData?.find(
+    (ad) => videoTime > ad.startTime && videoTime <= ad.startTime + ad.duration
+  );
+  return {
+    adDuration: currentAd?.duration || 0,
+    adProgress: currentAd ? videoTime - currentAd.startTime : 0,
+  };
+};
+
+export const getAdjustVideoTime = (adData, videoTime) => {
+  const adDurationSum = adData?.reduce((sum, ad) => {
+    if (videoTime >= ad.startTime) {
+      return sum + ad.duration;
+    }
+    return sum;
+  }, 0);
+  return videoTime - adDurationSum;
+};
+
+export const getSeekTime = (adData, seekFrame) => {
+  let seekTime = seekFrame;
+  adData?.forEach((ad) => {
+    if (seekTime >= ad.startTime) {
+      seekTime += ad.duration;
+    }
+  });
+  return seekTime;
 };
