@@ -88,7 +88,11 @@ const VideoPlayer = ({ videoData }) => {
           poster={videoPoster}
           controls
         />
-        {inAd && <AdContainer>这是⚠️广告</AdContainer>}
+        {inAd && (
+          <AdContainer>
+            Ad {adInfo.adIndex} of {adInfo.totalAds}
+          </AdContainer>
+        )}
       </VideoContainer>
       <Bottom
         duration={inAd ? adInfo.adDuration : videoDuration}
@@ -127,13 +131,11 @@ const VideoContainer = styled.div`
 `;
 
 const AdContainer = styled.div`
-  color: red;
-  font-size: 4rem;
+  color: ${colors.black};
   background-color: ${colors.activeItem};
   position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  top: 10%;
+  left: 5%;
   z-index: 1;
 `;
 
