@@ -33,13 +33,13 @@ export const fetchVideoData = (currentSource) => {
 
 export const checkInAd = (adData, time) => {
   return adData.some(
-    (ad) => time > ad.startTime && time <= ad.startTime + ad.duration
+    (ad) => time > ad.startTime && time < ad.startTime + ad.duration
   );
 };
 
 export const getAdInfo = (adData, videoTime) => {
   const currentIndex = adData?.findIndex(
-    (ad) => videoTime > ad.startTime && videoTime <= ad.startTime + ad.duration
+    (ad) => videoTime > ad.startTime && videoTime < ad.startTime + ad.duration
   );
   const totalAds = adData?.length;
   if (currentIndex !== -1) {
@@ -55,7 +55,10 @@ export const getAdInfo = (adData, videoTime) => {
 };
 
 export const getAdjustVideoTime = (adData, videoTime) => {
-  const adDurationSum = adData?.reduce((sum, ad) => {
+  if (!adData) {
+    return videoTime;
+  }
+  const adDurationSum = adData.reduce((sum, ad) => {
     if (videoTime >= ad.startTime) {
       return sum + ad.duration;
     }
@@ -65,6 +68,9 @@ export const getAdjustVideoTime = (adData, videoTime) => {
 };
 
 export const getSeekTime = (adData, seekFrame) => {
+  if (!adData) {
+    return seekFrame;
+  }
   return adData?.reduce((seekTime, ad) => {
     if (seekTime >= ad.startTime) {
       return seekTime + ad.duration;

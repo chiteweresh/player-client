@@ -20,6 +20,7 @@ const useAd = (adUrl, videoTime, seekFrame) => {
         .catch((error) => {
           console.error('请求广告数据时出现错误:', error);
         });
+    !adUrl && setAdData(null);
   }, [adUrl]);
 
   useEffect(() => {
@@ -28,7 +29,7 @@ const useAd = (adUrl, videoTime, seekFrame) => {
 
   const adInfo = inAd ? getAdInfo(adData, videoTime) : null;
   const modifiedTime = !inAd ? getAdjustVideoTime(adData, videoTime) : null;
-  const seekTime = getSeekTime(adData, seekFrame) || 0;
+  const seekTime = getSeekTime(adData, seekFrame);
 
   return {
     adInfo,
