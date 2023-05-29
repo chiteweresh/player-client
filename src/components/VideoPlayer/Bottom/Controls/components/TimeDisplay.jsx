@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { dimensions } from '../../../../../style/theme';
+import { VIDEO_DIMENSIONS } from '../../../../../style/theme';
 import { getDisplayTime } from '../../../../../utils/utils';
 
 const TimeDisplay = ({ currentTime, duration }) => {
@@ -15,7 +15,7 @@ const TimeDisplay = ({ currentTime, duration }) => {
 };
 
 const Wrapper = styled.div`
-  height: ${dimensions.buttonHeight}px;
+  height: ${VIDEO_DIMENSIONS.buttonHeight}px;
   width: 150px;
   float: left;
   padding: 0 10px;

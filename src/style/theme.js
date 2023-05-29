@@ -1,28 +1,31 @@
-export const colors = {
+export const COLORS = {
   white: '#fff',
-  black: '#000',
+  black: '#131313',
   background: '#D3D3D3FF',
   videoProgress: '#DC143CFF',
-  adProgress: '#14bedc',
-  currentVolume: '#14bedc',
-  activeItem: '#eee6e6',
-  regularItem: '#fff2d6',
+  adProgress: '#14BEDC',
+  currentVolume: '#14BEDC',
+  activeItem: '#FCEAEA',
+  regularItem: '#FCFBFB',
 };
 
-export const dimensions = {
+export const VIDEO_DIMENSIONS = {
+  playerHeight: 400,
   videoWidth: 640,
   videoHeight: 360,
-  controlPanelHeight: 43,
+  controlPanelHeight: 40,
   buttonHeight: 36,
   volumeBarHeight: 5,
   fullVolumeWidth: 100,
   defaultVolumeWidth: 50,
   sliderSize: 15,
-  progressHeight: 5,
+  progressHeight: 4,
   progressWidth: 640,
-  posterDimension: 100,
 };
 
-export const baseMargin = '1rem';
-
-export const baseBorder = 'lightblue 2px solid';
+export const PLAYLIST_DIMENSIONS = {
+  playlistWidth: 400,
+  itemHeight: 110,
+  posterWidth: 150,
+  thumbnailWidth: 50,
+};

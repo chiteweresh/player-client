@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { colors, dimensions } from '../../../../../../style/theme';
+import { COLORS, VIDEO_DIMENSIONS } from '../../../../../../style/theme';
 import { getShift } from '../../../../../../utils/utils';
 
 const VolumeSlider = ({ currentVolume, onUpdateVolume }) => {
@@ -34,17 +34,17 @@ const VolumeSlider = ({ currentVolume, onUpdateVolume }) => {
 };
 
 const VolumeBar = styled.div`
-  background-color: ${colors.background};
-  height: ${dimensions.volumeBarHeight}px;
+  background-color: ${COLORS.background};
+  height: ${VIDEO_DIMENSIONS.volumeBarHeight}px;
   margin-right: 10px;
   border-radius: 4px;
-  width: ${dimensions.fullVolumeWidth}px;
+  width: ${VIDEO_DIMENSIONS.fullVolumeWidth}px;
   position: relative;
 `;
 
 const CurrentVolume = styled.div`
-  background-color: ${colors.currentVolume};
-  height: ${dimensions.volumeBarHeight}px;
+  background-color: ${COLORS.currentVolume};
+  height: ${VIDEO_DIMENSIONS.volumeBarHeight}px;
   border-radius: 4px;
   position: absolute;
   top: 0;
@@ -52,11 +52,11 @@ const CurrentVolume = styled.div`
 `;
 
 const Slider = styled.div`
-  width: ${dimensions.sliderSize}px;
-  height: ${dimensions.sliderSize}px;
-  background-color: ${colors.white};
+  width: ${VIDEO_DIMENSIONS.sliderSize}px;
+  height: ${VIDEO_DIMENSIONS.sliderSize}px;
+  background-color: ${COLORS.white};
   border-radius: 50%;
-  border: ${colors.background} 1px solid;
+  border: ${COLORS.background} 1px solid;
   position: absolute;
   top: -5px;
   z-index: 1;
