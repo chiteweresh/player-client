@@ -79,11 +79,11 @@ const VideoDetail = styled.div`
 `;
 
 PlayList.propTypes = {
-  currentAsset: PropTypes.string,
+  currentAsset: PropTypes.number,
   onUpdateAsset: PropTypes.func.isRequired,
   playlist: PropTypes.arrayOf(
     PropTypes.shape({
-      assetId: PropTypes.string,
+      assetId: PropTypes.number,
       title: PropTypes.string,
       synopsis: PropTypes.string,
     })

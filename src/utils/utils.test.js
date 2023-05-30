@@ -1,7 +1,7 @@
 import { fetchVideoData } from './utils';
 
 describe('fetchVideoData', () => {
-  const mockCurrentSource = 'UUID000';
+  const mockCurrentSource = 0;
   const mockData = {
     assetId: 'UUID002',
     poster: 'https://s2.l.jpg',

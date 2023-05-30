@@ -6,7 +6,7 @@ import useVideo from './hooks/useVideo';
 import usePlayList from './hooks/usePlayList';
 
 const App = () => {
-  const [currentAsset, setCurrentAsset] = useState('UUID001');
+  const [currentAsset, setCurrentAsset] = useState(1);
   const videoData = useVideo(currentAsset);
   const playlist = usePlayList();
 
@@ -30,7 +30,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
   margin: 30px;
-  max-width: 1200px;
+  width: 1200px;
   min-height: 800px;
 `;
 const Banner = styled.div`
