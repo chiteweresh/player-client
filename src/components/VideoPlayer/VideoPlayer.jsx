@@ -86,7 +86,6 @@ const VideoPlayer = ({ videoData }) => {
           onEnded={onEnded}
           muted={muted}
           poster={videoPoster}
-          controls
         />
         {inAd && (
           <AdContainer>
