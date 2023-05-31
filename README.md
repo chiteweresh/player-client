@@ -1,19 +1,19 @@
 
 ## Player-v1.0
-Local video source for player controls
+Streaming video source for player controls
 - play/pause
 - volume/mute
 - seek/progress rewind and forward
 - subtitle  
-with
+- Ad tier \
+**with**
 - styled-component
 - prettier & lint
 - pre-commit hook
 
-## TODOs
-Deploy CI/CD  
-Add online streaming  [Dash.js](https://reference.dashif.org/dash.js/latest/samples/)  
-And if available: refine on PlayList
+### TODO
+- Express server for api
+- deploy
 
 # Getting Started with Create React App
 

@@ -4,7 +4,7 @@ const usePlayList = () => {
   const [playlist, setPlaylist] = useState(null);
 
   useEffect(() => {
-    fetch('/api/playlist.json')
+    fetch('./api/playlist.json')
       .then((res) => res.json())
       .then((data) => {
         setPlaylist(data);

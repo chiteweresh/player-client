@@ -3,5 +3,5 @@
   "poster": "https://cdn.bitmovin.com/content/assets/sintel/poster.png",
   "source": "  https://dash.akamaized.net/digitalprimates/fraunhofer/480p_video/heaac_2_0_with_video/Sintel/sintel_480p_heaac2_0.mpd",
   "duration": 842.850666667,
-  "ad": "/api/play/2/ad.json"
+  "ad": "./api/play/2/ad.json"
 }

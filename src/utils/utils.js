@@ -21,7 +21,7 @@ export const getShift = (e, ref) => {
 };
 
 export const fetchVideoData = (currentSource) => {
-  return fetch(`/api/play/${currentSource}.json`)
+  return fetch(`./api/play/${currentSource}.json`)
     .then((res) => res.json())
     .then((data) => {
       return data;
