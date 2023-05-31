@@ -1,0 +1,7 @@
+{
+  "assetId": 3,
+  "poster": "https://piratskatelevize.cz/shows/Movies/elephants-dream.jpg",
+  "source": "https://dash.akamaized.net/akamai/test/caption_test/ElephantsDream/elephants_dream_480p_heaac5_1_https.mpd",
+  "duration": 638.696,
+  "ad": "./api/play/3/ad.json"
+}
