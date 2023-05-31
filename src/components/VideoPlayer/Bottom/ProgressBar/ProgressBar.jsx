@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { colors, dimensions } from '../../../../style/theme';
+import { COLORS, VIDEO_DIMENSIONS } from '../../../../style/theme';
 import { getShift } from '../../../../utils/utils';
 
 const ProgressBar = ({ currentTime, duration, onSeek, ad }) => {
@@ -12,7 +12,7 @@ const ProgressBar = ({ currentTime, duration, onSeek, ad }) => {
     onSeek(framesTime);
   };
   const setCurrentProgressWidth = () => {
-    return currentTime && currentTime <= duration
+    return currentTime && currentTime <= duration && duration > 0
       ? (currentTime / duration) * progressRef.current.offsetWidth
       : 0;
   };
@@ -25,15 +25,15 @@ const ProgressBar = ({ currentTime, duration, onSeek, ad }) => {
 
 const Progress = styled.div`
   position: relative;
-  background-color: ${colors.background};
-  height: ${dimensions.progressHeight}px;
-  width: ${dimensions.progressWidth}px;
+  background-color: ${COLORS.background};
+  height: ${VIDEO_DIMENSIONS.progressHeight}px;
+  width: ${VIDEO_DIMENSIONS.progressWidth}px;
 `;
 
 const CurrentProgress = styled.div`
-  height: ${dimensions.progressHeight}px;
+  height: ${VIDEO_DIMENSIONS.progressHeight}px;
   background-color: ${(props) =>
-    props.ad ? colors.adProgress : colors.videoProgress};
+    props.ad ? COLORS.adProgress : COLORS.videoProgress};
   position: absolute;
   top: 0;
   left: 0;

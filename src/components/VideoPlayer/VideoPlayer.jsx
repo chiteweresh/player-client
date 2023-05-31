@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import dashjs from 'dashjs';
-import { baseBorder, colors, dimensions } from '../../style/theme';
+import { COLORS, VIDEO_DIMENSIONS } from '../../style/theme';
 import Bottom from './Bottom/Bottom';
 import useAd from '../../hooks/useAd';
 
@@ -77,7 +77,7 @@ const VideoPlayer = ({ videoData }) => {
   };
 
   return (
-    <>
+    <PlayerContainer>
       <VideoContainer>
         <video
           className="dash-video"
@@ -88,7 +88,11 @@ const VideoPlayer = ({ videoData }) => {
           poster={videoPoster}
           controls
         />
-        {inAd && <AdContainer>这是⚠️广告</AdContainer>}
+        {inAd && (
+          <AdContainer>
+            Ad {adInfo.adIndex} of {adInfo.totalAds}
+          </AdContainer>
+        )}
       </VideoContainer>
       <Bottom
         duration={inAd ? adInfo.adDuration : videoDuration}
@@ -104,36 +108,39 @@ const VideoPlayer = ({ videoData }) => {
         onSwitchSubtitle={onSwitchSubtitle}
         ad={inAd}
       />
-    </>
+    </PlayerContainer>
   );
 };
 
+const PlayerContainer = styled.div`
+  width: ${VIDEO_DIMENSIONS.videoWidth}px;
+  height: ${VIDEO_DIMENSIONS.playerHeight}px;
+  background-color: ${COLORS.regularItem};
+  margin: 0 auto;
+`;
+
 const VideoContainer = styled.div`
   position: relative;
-  width: ${dimensions.videoWidth}px;
-  height: ${dimensions.videoHeight}px;
-  margin: 50px auto 0;
-  border: ${baseBorder};
-  background-color: white;
+  width: ${VIDEO_DIMENSIONS.videoWidth}px;
+  height: ${VIDEO_DIMENSIONS.videoHeight}px;
 
   .dash-video {
+    display: flex;
     position: relative;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    max-width: ${dimensions.videoWidth}px;
-    height: ${dimensions.videoHeight}px;
+    max-width: ${VIDEO_DIMENSIONS.videoWidth}px;
+    max-height: ${VIDEO_DIMENSIONS.videoHeight}px;
   }
 `;
 
 const AdContainer = styled.div`
-  color: red;
-  font-size: 4rem;
-  background-color: ${colors.activeItem};
+  color: ${COLORS.black};
+  font-weight: bold;
   position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
+  top: 5%;
+  left: 5%;
   z-index: 1;
 `;
 

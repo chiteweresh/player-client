@@ -7,13 +7,13 @@ import { ReactComponent as Rewind } from '../../../../../svg/rewind.svg';
 import { ReactComponent as Speaker } from '../../../../../svg/speaker.svg';
 import { ReactComponent as Mute } from '../../../../../svg/mute.svg';
 import { ReactComponent as Subtitle } from '../../../../../svg/subtitle.svg';
-import { colors, dimensions } from '../../../../../style/theme';
+import { COLORS, VIDEO_DIMENSIONS } from '../../../../../style/theme';
 
 const ControlButton = styled.button`
   float: left;
   background-color: transparent;
   border: none;
-  height: ${dimensions.buttonHeight}px;
+  height: ${VIDEO_DIMENSIONS.buttonHeight}px;
   padding: 0 0 0 1px;
   box-sizing: content-box;
   cursor: pointer;
@@ -62,7 +62,7 @@ export const SpeakerMuteButton = ({ onMute, muted, volume }) => (
 
 export const SubtitleToggle = ({ subtitle, onSwitchSubtitle }) => (
   <ControlButton type="button" onClick={onSwitchSubtitle}>
-    <Subtitle fill={subtitle ? colors.black : colors.background} />
+    <Subtitle fill={subtitle ? COLORS.black : COLORS.background} />
   </ControlButton>
 );
 

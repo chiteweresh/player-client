@@ -21,7 +21,7 @@ export const getShift = (e, ref) => {
 };
 
 export const fetchVideoData = (currentSource) => {
-  return fetch(`/api/play/${currentSource}.json`)
+  return fetch(`./api/play/${currentSource}.json`)
     .then((res) => res.json())
     .then((data) => {
       return data;
@@ -31,24 +31,40 @@ export const fetchVideoData = (currentSource) => {
     });
 };
 
-export const checkInAd = (adData, time) => {
+export const checkInAd = (adData, videoTime) => {
   return adData.some(
-    (ad) => time > ad.startTime && time <= ad.startTime + ad.duration
+    (ad) => videoTime > ad.startTime && videoTime < ad.startTime + ad.duration
   );
 };
 
-export const getAdInfo = (adData, videoTime) => {
-  const currentAd = adData?.find(
-    (ad) => videoTime > ad.startTime && videoTime <= ad.startTime + ad.duration
+export const getAd = (adData, videoTime) => {
+  const currentAvails = adData?.find(
+    (avails) =>
+      videoTime > avails.startTime &&
+      videoTime < avails.startTime + avails.duration
   );
+  if (!currentAvails) {
+    return {};
+  }
+  const { ads } = currentAvails;
+  const totalAds = ads.length;
+  const currentAdIndex = ads.findIndex(
+    (ad) => videoTime > ad.startTime && videoTime < ad.startTime + ad.duration
+  );
+  const currentAd = ads[currentAdIndex];
   return {
-    adDuration: currentAd?.duration || 0,
-    adProgress: currentAd ? videoTime - currentAd.startTime : 0,
+    adDuration: currentAd.duration,
+    adProgress: videoTime - currentAd.startTime,
+    adIndex: currentAdIndex + 1,
+    totalAds,
   };
 };
 
 export const getAdjustVideoTime = (adData, videoTime) => {
-  const adDurationSum = adData?.reduce((sum, ad) => {
+  if (!adData) {
+    return videoTime;
+  }
+  const adDurationSum = adData.reduce((sum, ad) => {
     if (videoTime >= ad.startTime) {
       return sum + ad.duration;
     }
@@ -58,11 +74,13 @@ export const getAdjustVideoTime = (adData, videoTime) => {
 };
 
 export const getSeekTime = (adData, seekFrame) => {
-  let seekTime = seekFrame;
-  adData?.forEach((ad) => {
+  if (!adData) {
+    return seekFrame;
+  }
+  return adData.reduce((seekTime, ad) => {
     if (seekTime >= ad.startTime) {
-      seekTime += ad.duration;
+      return seekTime + ad.duration;
     }
-  });
-  return seekTime;
+    return seekTime;
+  }, seekFrame);
 };

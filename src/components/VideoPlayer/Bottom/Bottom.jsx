@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { baseBorder, dimensions } from '../../../style/theme';
+import { VIDEO_DIMENSIONS } from '../../../style/theme';
 import Controls from './Controls/Controls';
 import ProgressBar from './ProgressBar/ProgressBar';
 
@@ -46,11 +46,9 @@ const Bottom = ({
 };
 
 const Container = styled.div`
-  width: ${dimensions.videoWidth}px;
-  margin: auto;
+  width: ${VIDEO_DIMENSIONS.videoWidth}px;
+  height: ${VIDEO_DIMENSIONS.controlPanelHeight}px;
   position: relative;
-  border: ${baseBorder};
-  height: ${dimensions.controlPanelHeight}px;
 `;
 
 Bottom.propTypes = {

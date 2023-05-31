@@ -1,6 +1,13 @@
 [
   {
     "startTime": 300,
-    "duration": 15
+    "duration": 15,
+    "ads": [
+      {
+        "adId": "1_1",
+        "startTime": 300,
+        "duration": 15
+      }
+    ]
   }
 ]

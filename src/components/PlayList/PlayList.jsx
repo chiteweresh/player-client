@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { baseMargin, colors, dimensions } from '../../style/theme';
+import { COLORS, PLAYLIST_DIMENSIONS } from '../../style/theme';
 import { getDisplayTime } from '../../utils/utils';
 
 const PlayList = ({ currentAsset, onUpdateAsset, playlist }) => {
   return (
-    <Container>
+    <PlayListContainer>
       {playlist &&
         playlist.map((item) => (
           <PlayListItem
@@ -14,66 +14,76 @@ const PlayList = ({ currentAsset, onUpdateAsset, playlist }) => {
             active={item.assetId === currentAsset}
             onClick={() => onUpdateAsset(item.assetId)}
           >
-            <VideoPoster src={item.poster} alt="poster" />
+            <VideoPoster>
+              <img className="poster" src={item.poster} alt="poster" />
+              <VideoThumbnail>{getDisplayTime(item.duration)}</VideoThumbnail>
+            </VideoPoster>
             <VideoDetail>
               <div className="video-title">{item.title}</div>
-              <div className="video-description">{item.synopsis}</div>
-              <div className="video-description">
-                duration: {getDisplayTime(item.duration)}
-              </div>
+              <div className="video-description">{item.author}</div>
             </VideoDetail>
           </PlayListItem>
         ))}
-    </Container>
+    </PlayListContainer>
   );
 };
 
-const Container = styled.div`
-  width: ${dimensions.videoWidth}px;
-  margin: ${baseMargin} auto ${baseMargin};
-  display: grid;
+const PlayListContainer = styled.div`
+  width: ${PLAYLIST_DIMENSIONS.playlistWidth}px;
 `;
 
 const PlayListItem = styled.div`
-  width: ${dimensions.videoWidth}px;
-  font-size: 1rem;
-  margin-bottom: 5px;
-  height: 120px;
+  margin-bottom: 2px;
+  height: ${PLAYLIST_DIMENSIONS.itemHeight}px;
   display: flex;
   align-items: center;
-  text-align: left;
   border-radius: 4px;
   background-color: ${(props) =>
-    props.active ? colors.activeItem : colors.regularItem};
+    props.active ? COLORS.activeItem : COLORS.regularItem};
   cursor: pointer;
 `;
 
-const VideoPoster = styled.img`
-  width: ${dimensions.posterDimension}px;
-  height: ${dimensions.posterDimension}px;
-  margin: 0 ${baseMargin};
+const VideoPoster = styled.div`
+  width: ${PLAYLIST_DIMENSIONS.posterWidth}px;
+  height: ${0.6 * PLAYLIST_DIMENSIONS.posterWidth}px;
+  background-color: lightblue;
+  position: relative;
+
+  .poster {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+const VideoThumbnail = styled.div`
+  width: ${PLAYLIST_DIMENSIONS.thumbnailWidth}px;
+  background-color: ${COLORS.black};
+  color: ${COLORS.white};
+  border-radius: 3px;
+  font-size: x-small;
+  text-align: center;
+  margin-left: auto;
+  transform: translateY(-150%) translateX(-10%);
 `;
 
 const VideoDetail = styled.div`
-  height: ${dimensions.posterDimension}px;
-  margin: 0 ${baseMargin};
+  height: 90px;
+  font-weight: bold;
+  margin-left: 10px;
   .video-title {
-    padding-top: 10px;
-    font-family: monospace, monospace;
-    font-size: 1.25rem;
+    padding-bottom: 5px;
   }
   .video-description {
-    width: inherit;
-    padding-top: 10px;
+    color: ${COLORS.background};
   }
 `;
 
 PlayList.propTypes = {
-  currentAsset: PropTypes.string,
+  currentAsset: PropTypes.number,
   onUpdateAsset: PropTypes.func.isRequired,
   playlist: PropTypes.arrayOf(
     PropTypes.shape({
-      assetId: PropTypes.string,
+      assetId: PropTypes.number,
       title: PropTypes.string,
       synopsis: PropTypes.string,
     })

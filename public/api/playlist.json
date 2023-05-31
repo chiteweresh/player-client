@@ -1,21 +1,47 @@
 [
   {
-    "assetId": "UUID001",
-    "poster": "https://s2.loli.net/2023/05/17/6f5TSCGR7EaAXjL.jpg",
-    "title": "bbb",
+    "assetId": 1,
+    "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Big.Buck.Bunny.-.Frank.Rinky.Gimera.png/640px-Big.Buck.Bunny.-.Frank.Rinky.Gimera.png",
+    "title": "Big Buck Bunny",
+    "author": "Sacha Goedegebure",
     "synopsis": "bbb_30fps",
-    "duration": 634.566
-  },{
-    "assetId": "UUID002",
-    "poster": "https://s2.loli.net/2023/05/17/BdIjzcuShHZvqiQ.png",
-    "title": "sintel",
+    "duration": 604.566,
+    "totalDuration": 634.566
+  },
+  {
+    "assetId": 2,
+    "poster": "https://upload.wikimedia.org/wikipedia/commons/8/86/Durian_-_Sintel-wallpaper-ishtar.jpg",
+    "title": "Sintel",
+    "author": "Ton Roosendaal",
     "synopsis": "sintel 480P",
-    "duration": 887.850666667
-  },{
-    "assetId": "UUID003",
-    "poster": "https://s2.loli.net/2023/05/17/CMtx3Gpm1VS9ezX.png",
-    "title": "elephants dream",
+    "duration": 842.850666667,
+    "totalDuration": 887.850666667
+  },
+  {
+    "assetId": 3,
+    "poster": "https://piratskatelevize.cz/shows/Movies/elephants-dream.jpg",
+    "title": "Elephants Dream",
+    "author": "Ton Roosendaal",
     "synopsis": "elephants_dream_480p",
-    "duration": 653.696
+    "duration": 638.696,
+    "totalDuration": 653.696
+  },
+  {
+    "assetId": 4,
+    "poster": "https://bitmovin.com/wp-content/uploads/2023/05/event-small-broadcast-asia-min.jpg",
+    "title": "stream-test",
+    "author": "bitmovin",
+    "synopsis": "elephants_dream_480p",
+    "duration": 210.01,
+    "totalDuration": 210.01
+  },
+  {
+    "assetId": 5,
+    "poster": "https://www.chip.de/ii/204185356_e6fa0dff9f.jpg",
+    "title": "Elephants Dream3",
+    "author": "dash",
+    "synopsis": "elephants_dream_480p",
+    "duration": 0,
+    "totalDuration": 0
   }
 ]
