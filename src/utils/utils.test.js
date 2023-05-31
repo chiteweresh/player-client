@@ -18,7 +18,7 @@ describe('fetchVideoData', () => {
     expect(result).toEqual(mockData);
 
     expect(fetch).toHaveBeenCalledTimes(1);
-    expect(fetch).toHaveBeenCalledWith(`/api/play/${mockCurrentSource}.json`);
+    expect(fetch).toHaveBeenCalledWith(`./api/play/${mockCurrentSource}.json`);
   });
 
   it('handles fetch error', async () => {
@@ -37,6 +37,6 @@ describe('fetchVideoData', () => {
     );
 
     expect(fetch).toHaveBeenCalledTimes(1);
-    expect(fetch).toHaveBeenCalledWith(`/api/play/${mockCurrentSource}.json`);
+    expect(fetch).toHaveBeenCalledWith(`./api/play/${mockCurrentSource}.json`);
   });
 });
