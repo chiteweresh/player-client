@@ -1,3 +1,5 @@
+import API_URL from '../constants';
+
 export const getDisplayTime = (time) => {
   if (!time || time <= 0) {
     return '00:00:00';
@@ -21,7 +23,7 @@ export const getShift = (e, ref) => {
 };
 
 export const fetchVideoData = (currentSource) => {
-  return fetch(`./api/play/${currentSource}.json`)
+  return fetch(`${API_URL}/play/${currentSource}`)
     .then((res) => res.json())
     .then((data) => {
       return data;
