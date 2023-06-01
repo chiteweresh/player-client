@@ -1,4 +1,5 @@
 import { fetchVideoData } from './utils';
+import API_URL from '../constants';
 
 describe('fetchVideoData', () => {
   const mockCurrentSource = 0;
@@ -18,7 +19,7 @@ describe('fetchVideoData', () => {
     expect(result).toEqual(mockData);
 
     expect(fetch).toHaveBeenCalledTimes(1);
-    expect(fetch).toHaveBeenCalledWith(`./api/play/${mockCurrentSource}.json`);
+    expect(fetch).toHaveBeenCalledWith(`${API_URL}/play/${mockCurrentSource}`);
   });
 
   it('handles fetch error', async () => {
@@ -37,6 +38,6 @@ describe('fetchVideoData', () => {
     );
 
     expect(fetch).toHaveBeenCalledTimes(1);
-    expect(fetch).toHaveBeenCalledWith(`./api/play/${mockCurrentSource}.json`);
+    expect(fetch).toHaveBeenCalledWith(`${API_URL}/play/${mockCurrentSource}`);
   });
 });
