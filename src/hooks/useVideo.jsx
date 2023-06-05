@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { fetchVideoData } from '../utils/utils';
+import errorCover from '../Error.png';
 
 const useVideo = (currentAsset) => {
   const [videoUrl, setVideoUrl] = useState(null);
@@ -16,7 +17,7 @@ const useVideo = (currentAsset) => {
         setAdUrl(data.ad);
       })
       .catch(() => {
-        setVideoPoster('./Error.png');
+        setVideoPoster(errorCover);
         setVideoUrl(null);
         setVideoDuration(null);
         setAdUrl(null);
