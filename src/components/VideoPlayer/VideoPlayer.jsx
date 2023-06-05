@@ -10,7 +10,7 @@ const VideoPlayer = ({ videoData }) => {
   const videoRef = useRef();
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
-  const [volume, setVolume] = useState(0.5);
+  const [volume, setVolume] = useState(0.9);
   const [currentTime, setCurrentTime] = useState(0);
   const [videoTime, setVideoTime] = useState(0);
   const [seekFrame, setSeekFrame] = useState(0);

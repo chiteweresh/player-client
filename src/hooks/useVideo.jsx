@@ -8,12 +8,19 @@ const useVideo = (currentAsset) => {
   const [adUrl, setAdUrl] = useState(null);
 
   useEffect(() => {
-    fetchVideoData(currentAsset).then((data) => {
-      setVideoPoster(data.poster);
-      setVideoUrl(data.source);
-      setVideoDuration(data.duration);
-      setAdUrl(data.ad);
-    });
+    fetchVideoData(currentAsset)
+      .then((data) => {
+        setVideoPoster(data.poster);
+        setVideoUrl(data.source);
+        setVideoDuration(data.duration);
+        setAdUrl(data.ad);
+      })
+      .catch(() => {
+        setVideoPoster('./Error.png');
+        setVideoUrl(null);
+        setVideoDuration(null);
+        setAdUrl(null);
+      });
   }, [currentAsset]);
 
   return { videoPoster, videoUrl, videoDuration, adUrl };

@@ -22,8 +22,8 @@ export const getShift = (e, ref) => {
   return clickPosition - panelPosition;
 };
 
-export const fetchVideoData = (currentSource) => {
-  return fetch(`${API_URL}/play/${currentSource}`)
+export const fetchVideoData = (currentAsset) => {
+  return fetch(`${API_URL}/play/${currentAsset}`)
     .then((res) => res.json())
     .then((data) => {
       return data;

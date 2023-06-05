@@ -33,11 +33,11 @@ const PlayListContainer = styled.div`
 `;
 
 const PlayListItem = styled.div`
-  margin-bottom: 2px;
+  margin-bottom: 5px;
   height: ${PLAYLIST_DIMENSIONS.itemHeight}px;
   display: flex;
   align-items: center;
-  border-radius: 4px;
+  border-radius: 5px;
   background-color: ${(props) =>
     props.active ? COLORS.activeItem : COLORS.regularItem};
   cursor: pointer;
@@ -45,13 +45,13 @@ const PlayListItem = styled.div`
 
 const VideoPoster = styled.div`
   width: ${PLAYLIST_DIMENSIONS.posterWidth}px;
-  height: ${0.6 * PLAYLIST_DIMENSIONS.posterWidth}px;
-  background-color: lightblue;
+  height: ${0.55 * PLAYLIST_DIMENSIONS.posterWidth}px;
   position: relative;
 
   .poster {
     width: 100%;
     height: 100%;
+    border-radius: 5px;
   }
 `;
 
@@ -67,14 +67,21 @@ const VideoThumbnail = styled.div`
 `;
 
 const VideoDetail = styled.div`
-  height: 90px;
-  font-weight: bold;
+  height: ${PLAYLIST_DIMENSIONS.itemHeight}px;
+  width: 230px;
   margin-left: 10px;
   .video-title {
-    padding-bottom: 5px;
+    padding-bottom: 8px;
+    font-size: smaller;
   }
   .video-description {
-    color: ${COLORS.background};
+    color: ${COLORS.descriptionText};
+    font-size: small;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 `;
 

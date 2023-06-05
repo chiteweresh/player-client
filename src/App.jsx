@@ -28,9 +28,9 @@ const App = () => {
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 9fr 4fr;
   margin: 30px;
-  width: 1200px;
+  width: 1300px;
   min-height: 800px;
 `;
 const Banner = styled.div`

@@ -5,14 +5,15 @@ export const COLORS = {
   videoProgress: '#DC143CFF',
   adProgress: '#14BEDC',
   currentVolume: '#14BEDC',
-  activeItem: '#FCEAEA',
-  regularItem: '#FCFBFB',
+  activeItem: '#fff2f2',
+  regularItem: '#fdfdfd',
+  descriptionText: '#797878',
 };
 
 export const VIDEO_DIMENSIONS = {
-  playerHeight: 400,
-  videoWidth: 640,
-  videoHeight: 360,
+  playerHeight: 520,
+  videoWidth: 840,
+  videoHeight: 480,
   controlPanelHeight: 40,
   buttonHeight: 36,
   volumeBarHeight: 5,
@@ -20,12 +21,12 @@ export const VIDEO_DIMENSIONS = {
   defaultVolumeWidth: 50,
   sliderSize: 15,
   progressHeight: 4,
-  progressWidth: 640,
+  progressWidth: 840,
 };
 
 export const PLAYLIST_DIMENSIONS = {
   playlistWidth: 400,
-  itemHeight: 110,
+  itemHeight: 82.5,
   posterWidth: 150,
   thumbnailWidth: 50,
 };

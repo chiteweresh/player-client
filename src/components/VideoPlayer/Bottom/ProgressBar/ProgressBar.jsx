@@ -37,7 +37,6 @@ const CurrentProgress = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  transition: width 450ms;
 `;
 
 ProgressBar.propTypes = {
