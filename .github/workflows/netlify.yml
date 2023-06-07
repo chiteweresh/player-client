@@ -32,11 +32,13 @@ jobs:
         
       - name: Rename static file and directory
         run: |
-          mkdir -p ${{ github.event.release.tag_name }}
+          mkdir -p build/${{ github.event.release.tag_name }}
           mv build/static/js/main.*.js build/${{ github.event.release.tag_name }}/main.js
 
       - name: Deploy
-        uses: nwtgck/actions-netlify@v2.0.0
+        uses: South-Paw/action-netlify-deploy@v1.2.0
         with:
-          publish-dir:: build/${{ github.event.release.tag_name }}
+          build-dir: build/${{ github.event.release.tag_name }}
+          netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
           github-token:: ${{ secrets.TOKEN }}
