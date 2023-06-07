@@ -41,4 +41,4 @@ jobs:
           build-dir: build/${{ github.event.release.tag_name }}
           netlify-auth-token: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           netlify-site-id: ${{ secrets.NETLIFY_SITE_ID }}
-          github-token:: ${{ secrets.TOKEN }}
+          github-token: ${{ secrets.TOKEN }}
