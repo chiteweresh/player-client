@@ -1,10 +1,8 @@
-name: Deploy to GitHub Pages
+name: Deploy to Netlify
 
 on:
-  push:
-    branches:
-      - server
-  workflow_dispatch:
+  release:
+    types: [created]
 
 jobs:
   CI-CD:
@@ -30,10 +28,14 @@ jobs:
 
       - name: Build
         run: npm run build
+        
+      - name: Rename static file and directory
+        run: |
+          mkdir -p ${{ github.event.release.tag_name }}
+          mv build/static/js/main.${{ github.sha }}.js build/${{ github.event.release.tag_name }}/main.js
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.4
+        uses: nwtgck/actions-netlify@v2.0.0
         with:
-          branch: gh-pages-with-exp
-          folder: build
-          token: ${{ secrets.TOKEN }}
+          publish-dir:: build/${{ github.event.release.tag_name }}
+          github-token:: ${{ secrets.TOKEN }}
