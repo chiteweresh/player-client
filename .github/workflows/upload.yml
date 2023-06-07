@@ -32,10 +32,12 @@ jobs:
       - name: Rename static file and directory
         run: |
           mkdir -p build/${{ github.event.release.tag_name }}
-          mv build/static/js/main.*.js build/${{ github.event.release.tag_name }}/main.js
+          mv build/static/js/main.*.js build/${{ github.event.release.tag_name }}/main.${{ github.event.release.tag_name }}.js
 
       - name: Deploy
         uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
