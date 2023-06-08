@@ -7,6 +7,7 @@ import { getDisplayTime } from '../../utils/utils';
 const PlayList = ({ currentAsset, onUpdateAsset, playlist }) => {
   return (
     <PlayListContainer>
+      <StaticAdContainer src="https://www.gamerefinery.com/wp-content/uploads/2021/10/cookie-run-kingdom-revenue-spike-header-image.png" />
       {playlist &&
         playlist.map((item) => (
           <PlayListItem
@@ -30,6 +31,14 @@ const PlayList = ({ currentAsset, onUpdateAsset, playlist }) => {
 
 const PlayListContainer = styled.div`
   width: ${PLAYLIST_DIMENSIONS.playlistWidth}px;
+`;
+
+const StaticAdContainer = styled.img`
+  width: ${PLAYLIST_DIMENSIONS.playlistWidth}px;
+  height: 150px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  margin-bottom: 5px;
 `;
 
 const PlayListItem = styled.div`

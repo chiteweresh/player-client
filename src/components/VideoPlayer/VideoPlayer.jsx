@@ -86,6 +86,7 @@ const VideoPlayer = ({ videoData }) => {
           onEnded={onEnded}
           muted={muted}
           poster={videoPoster}
+          controls
         />
         {inAd && (
           <AdContainer>
@@ -135,11 +136,12 @@ const VideoContainer = styled.div`
 `;
 
 const AdContainer = styled.div`
-  color: ${COLORS.black};
+  color: ${COLORS.adIndex};
   font-weight: bold;
+  font-size: large;
   position: absolute;
   top: 5%;
-  left: 5%;
+  left: 10%;
   z-index: 1;
 `;
 

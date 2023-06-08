@@ -29,7 +29,7 @@ const useAd = (adUrl, videoTime, seekFrame) => {
     adData && setInAd(checkInAd(adData, videoTime));
   }, [videoTime, adData]);
 
-  const adInfo = inAd ? getAd(adData, videoTime) : {};
+  const adInfo = getAd(adData, videoTime);
   const modifiedTime = getAdjustVideoTime(adData, videoTime);
   const seekTime = getSeekTime(adData, seekFrame);
 

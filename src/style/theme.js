@@ -8,6 +8,7 @@ export const COLORS = {
   activeItem: '#fff2f2',
   regularItem: '#fdfdfd',
   descriptionText: '#797878',
+  adIndex: '#14BEDC',
 };
 
 export const VIDEO_DIMENSIONS = {

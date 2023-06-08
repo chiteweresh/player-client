@@ -34,8 +34,11 @@ export const fetchVideoData = (currentAsset) => {
 };
 
 export const checkInAd = (adData, videoTime) => {
+  if (videoTime === 0) {
+    return false;
+  }
   return adData.some(
-    (ad) => videoTime > ad.startTime && videoTime < ad.startTime + ad.duration
+    (ad) => videoTime >= ad.startTime && videoTime < ad.startTime + ad.duration
   );
 };
 
