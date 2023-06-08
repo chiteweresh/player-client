@@ -1,33 +1,17 @@
 [
   {
-    "startTime": 10,
-    "duration": 30,
+    "startTime": 0,
+    "duration": 30.116282,
     "ads": [
       {
         "adId": "1_1",
-        "startTime": 10,
-        "duration": 10
+        "startTime": 0,
+        "duration": 15.046531
       },
       {
         "adId": "1_2",
-        "startTime": 20,
-        "duration": 10
-      },
-      {
-        "adId": "1_3",
-        "startTime": 30,
-        "duration": 10
-      }
-    ]
-  },
-  {
-    "startTime": 120,
-    "duration": 15,
-    "ads": [
-      {
-        "adId": "2_1",
-        "startTime": 120,
-        "duration": 15
+        "startTime": 15.046531,
+        "duration": 15.069751
       }
     ]
   }

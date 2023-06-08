@@ -135,11 +135,11 @@ const VideoContainer = styled.div`
 `;
 
 const AdContainer = styled.div`
-  color: ${COLORS.black};
+  color: ${COLORS.adIndex};
   font-weight: bold;
   position: absolute;
   top: 5%;
-  left: 5%;
+  left: 10%;
   z-index: 1;
 `;
 

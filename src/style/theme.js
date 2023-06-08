@@ -7,6 +7,7 @@ export const COLORS = {
   currentVolume: '#14BEDC',
   activeItem: '#FCEAEA',
   regularItem: '#FCFBFB',
+  adIndex: '#14BEDC',
 };
 
 export const VIDEO_DIMENSIONS = {

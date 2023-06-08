@@ -1,0 +1,24 @@
+[
+  {
+    "startTime": 0,
+    "duration": 15.069751,
+    "ads": [
+      {
+        "adId": "1_1",
+        "startTime": 0,
+        "duration": 15.069751
+      }
+    ]
+  },
+  {
+    "startTime": 315.069751,
+    "duration": 15.046531,
+    "ads": [
+      {
+        "adId": "2_1",
+        "startTime": 315.069751,
+        "duration": 15.046531
+      }
+    ]
+  }
+]
