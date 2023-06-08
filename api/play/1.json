@@ -1,7 +1,7 @@
 {
   "assetId": 1,
   "poster": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Big.Buck.Bunny.-.Frank.Rinky.Gimera.png/640px-Big.Buck.Bunny.-.Frank.Rinky.Gimera.png",
-  "source": "https://dash.akamaized.net/akamai/bbb_30fps/bbb_30fps.mpd",
-  "duration": 604.566,
+  "source": "https://cdn.samuraime.com/streaming/dash-examples/ad-free.mpd",
+  "duration": 596.458,
   "ad": "./api/play/1/ad.json"
 }

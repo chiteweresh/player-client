@@ -5,8 +5,8 @@
     "title": "Big Buck Bunny",
     "author": "Sacha Goedegebure",
     "synopsis": "bbb_30fps",
-    "duration": 604.566,
-    "totalDuration": 634.566
+    "duration": 596.458,
+    "totalDuration": 596.458
   },
   {
     "assetId": 2,
@@ -14,8 +14,8 @@
     "title": "Sintel",
     "author": "Ton Roosendaal",
     "synopsis": "sintel 480P",
-    "duration": 842.850666667,
-    "totalDuration": 887.850666667
+    "duration": 596.458,
+    "totalDuration": 626.574282
   },
   {
     "assetId": 3,
@@ -23,8 +23,8 @@
     "title": "Elephants Dream",
     "author": "Ton Roosendaal",
     "synopsis": "elephants_dream_480p",
-    "duration": 638.696,
-    "totalDuration": 653.696
+    "duration": 596.458,
+    "totalDuration": 626.597502
   },
   {
     "assetId": 4,
@@ -32,8 +32,8 @@
     "title": "stream-test",
     "author": "bitmovin",
     "synopsis": "elephants_dream_480p",
-    "duration": 210.01,
-    "totalDuration": 210.01
+    "duration": 596.458,
+    "totalDuration": 626.574282
   },
   {
     "assetId": 5,
@@ -41,7 +41,7 @@
     "title": "Elephants Dream3",
     "author": "dash",
     "synopsis": "elephants_dream_480p",
-    "duration": 0,
-    "totalDuration": 0
+    "duration": 638.696,
+    "totalDuration": 638.696
   }
 ]

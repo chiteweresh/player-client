@@ -1,12 +1,17 @@
 [
   {
     "startTime": 300,
-    "duration": 15,
+    "duration": 30.139502,
     "ads": [
       {
         "adId": "1_1",
         "startTime": 300,
-        "duration": 15
+        "duration": 15.069751
+      },
+      {
+        "adId": "1_2",
+        "startTime": 315.069751,
+        "duration": 15.069751
       }
     ]
   }
