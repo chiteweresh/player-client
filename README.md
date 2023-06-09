@@ -1,5 +1,5 @@
 
-## Player-v1.0
+## Player-client
 Streaming video source for player controls
 - play/pause
 - volume/mute
@@ -10,10 +10,6 @@ Streaming video source for player controls
 - styled-component
 - prettier & lint
 - pre-commit hook
-
-### TODO
-- Express server for api
-- deploy
 
 # Getting Started with Create React App
 
