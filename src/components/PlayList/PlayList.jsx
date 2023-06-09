@@ -21,7 +21,7 @@ const PlayList = ({ currentAsset, onUpdateAsset, playlist }) => {
             </VideoPoster>
             <VideoDetail>
               <div className="video-title">{item.title}</div>
-              <div className="video-description">{item.author}</div>
+              <div className="video-description">{item.synopsis}</div>
             </VideoDetail>
           </PlayListItem>
         ))}
