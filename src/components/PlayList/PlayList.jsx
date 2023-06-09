@@ -102,6 +102,8 @@ PlayList.propTypes = {
       assetId: PropTypes.number,
       title: PropTypes.string,
       synopsis: PropTypes.string,
+      poster: PropTypes.string,
+      duration: PropTypes.number,
     })
   ),
 };

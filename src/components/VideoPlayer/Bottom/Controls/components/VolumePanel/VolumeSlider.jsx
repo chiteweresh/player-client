@@ -7,7 +7,10 @@ import { getShift } from '../../../../../../utils/utils';
 const VolumeSlider = ({ currentVolume, onUpdateVolume }) => {
   const volumeRef = useRef(null);
   let volumeDisplayWidth = currentVolume * 100;
-  const sliderDisplayWidth = volumeDisplayWidth - 7.5;
+  const sliderDisplayWidth =
+    volumeDisplayWidth - VIDEO_DIMENSIONS.sliderSize / 2;
+  const sliderPosition =
+    (VIDEO_DIMENSIONS.volumeBarHeight - VIDEO_DIMENSIONS.sliderSize) / 2;
 
   const changeVolume = (e) => {
     const shift = getShift(e, volumeRef);
@@ -28,7 +31,13 @@ const VolumeSlider = ({ currentVolume, onUpdateVolume }) => {
   return (
     <VolumeBar ref={volumeRef} onClick={changeVolume}>
       <CurrentVolume style={{ width: volumeDisplayWidth }} />
-      <Slider onMouseDown={onDragSlider} style={{ left: sliderDisplayWidth }} />
+      <Slider
+        onMouseDown={onDragSlider}
+        style={{
+          left: sliderDisplayWidth,
+          top: sliderPosition,
+        }}
+      />
     </VolumeBar>
   );
 };
@@ -58,7 +67,6 @@ const Slider = styled.div`
   border-radius: 50%;
   border: ${COLORS.background} 1px solid;
   position: absolute;
-  top: -5px;
   z-index: 1;
 `;
 
